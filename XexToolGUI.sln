@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XexToolGUI", "XexToolGUI\XexToolGUI.csproj", "{FD59B95A-89FE-4796-96E4-A8D1ACBE9862}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD59B95A-89FE-4796-96E4-A8D1ACBE9862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD59B95A-89FE-4796-96E4-A8D1ACBE9862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD59B95A-89FE-4796-96E4-A8D1ACBE9862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD59B95A-89FE-4796-96E4-A8D1ACBE9862}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3AE018F1-5BD1-4B3D-924E-C000C03E20E4}
+	EndGlobalSection
+EndGlobal

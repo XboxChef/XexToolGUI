@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>:: Greets
+
+xor37h, for his initial version of xextool that started me working on this one
+and gave me the first hints into the structure and layout of the xex file
+format. tmbinc for also providing info that helped me get started and all the
+others who tested, reported bugs, gave encouragement and provided info to
+further improve this tool.</value>
+  </data>
+  <data name="TextBox1.Text" xml:space="preserve">
+    <value>XexTool v6.1  -  xorloser 2006-2010
+
+Usage:    XexTool &lt;options&gt; &lt;xex filename&gt;
+
+Options:
+
+          -l = print extended info list about xex file
+
+          -p &lt;xexp filename&gt; = patch xex with xexp
+
+          -b &lt;base filename&gt; = dump basefile from xex
+
+          -i &lt;idc filename&gt;  = dump basefile info to idc file
+
+          -d &lt;res. dirname&gt;  = dump all resources to a dir (can be '.')
+
+          -o &lt;xex filename&gt;  = output altered xex to a new file
+
+          -a &lt;bounding path&gt; = add bounding path to xex location
+
+          -u = fix patch updated xex to not require separate patch file
+
+          -s = do special xex specific patches
+
+          -r = remove xex limitations (a/m/r/b/d/i/y/v/k/l/c/z)
+
+               a = remove all limits (same as "mrbdiyvklcz")
+
+               m = remove media limits (all media)
+
+               r = remove region limits (all regions)
+
+               b = remove bounding pathname
+
+               d = remove bounding device id
+
+               i = remove console id restriction
+
+               y = remove dates restriction
+
+               v = remove keyvault privileges restriction
+
+               k = remove signed keyvault only limitation
+
+               l = remove minimum library version limitations
+
+               c = remove required revocation check
+
+               z = zero the media id
+
+          -m = force output xex machine format (d/r) (0=d, 1=r)
+
+               d = force output xex to be devkit
+
+               r = force output xex to be retail
+
+          -c = force output xex compression format (u/c/b) (0=u, 1=c)
+
+               u = force output xex to be uncompressed (no zeroed data)
+
+               c = force output xex to be compressed
+
+               b = force output xex to be binary (has zeroed data)
+
+          -e = force output xex encryption format (u/e) (0=u, 1=e)
+
+               u = force output xex to be uncrypted
+
+               e = force output xex to be encrypted
+
+          -x = xml output options (a/b/d/i/m/n/p/r/t/x)
+
+               a = extract everything
+
+               b = extract basefile type (ie dll, exe, patch, other)
+
+               d = extract media id
+
+               i = extract game icon
+
+               m = extract game supported medias
+
+               n = extract game name
+
+               p = extract bounding path
+
+               r = extract game supported regions
+
+               t = extract title id
+
+               x = extract xex machine format (retail or devkit xbox360)
+
+If "-o" is not used, the original xex file will be altered.
+
+Multiple options can be given at once, eg: "-m d -r mrl".
+
+If no options are given, a shortened xex info list will be printed.</value>
+  </data>
+  <data name="TextBox2.Text" xml:space="preserve">
+    <value>XexTool - xorloser
+
+This tool is for research purposes only.
+It must not be used for commercial/illegal/pirate uses.
+
+THIS WILL NOT MAGICALLY ALLOW YOU PLAY COPIED GAMES.
+
+:: Overview
+
+This is a tool to extract information on an xex file. It will print out
+xex information to the console, alter xex attributes, extract executable code
+and other basefiles and create idc scripts files to help with disassembling
+the extracted executable code.
+
+Note: Any altered or created retail xex files will not be correctly signed.
+
+:: Install
+
+If you wish to run xextool from anywhere, copy the xextool.exe file to
+a location in your path that is used for exe files. If you are not sure
+you can check the %PATH% environment variable (type "echo %PATH%" from
+the command line) or just copy it into your windows directory.
+
+If you use the "Create IDC" feature of xex tool then you need to copy
+x360_imports.idc into your "IDA\idc" directory so that it will be found
+by any IDC script that you run.
+
+:: Xex Format Basics
+
+An xex file consists of a basefile that the xex is built around and headers
+which contain various attributes to be used with the basefile.
+
+Usually the basefile is an executable file, however it can also be data file,
+as seen with ximedic.xex from the xbox360 flash. When the basefile is an
+executable file it is either an exe or dll, however it is not stored in its
+normal exe or dll format but instead as a binary file.
+
+Some of the xex header attributes are required, and others are optional. Some
+of these attributes are things such as the regions the xex is made for and the
+media the xex is allowed to boot from.
+
+The basefile can be optionally encrypted using aes encryption. All contents
+of the basefile are hashed and then rsa signed. Microsoft is the only one with
+access to the private key required to sign xexs in order to allow them to boot
+on a retail xbox360. A different key is used to sign xex files in order to
+allow them to boot on a development xbox360 (aka devkit).
+
+:: Usage Examples
+
+* Print basic info about an xex file to console:
+xextool default.xex
+
+* Print extended info about an xex file to console:
+xextool -l default.xex
+
+* Extract the executable basefile from default.xex into default.exe:
+xextool -b default.exe default.xex
+
+* Extract the executable file and create an idc script file from default.xex:
+xextool -b default.exe -i default.idc default.xex
+
+* Convert a retail xex into a development xex:
+xextool -m d default.xex
+
+* Convert a retail xex into a seperate development xex:
+xextool -m d -o devkit.xex retail.xex
+
+* Remove all region and media limits from an xex:
+xextool -r mr default.xex
+
+* Remove all limits and convert a retail xex into a devkit xex:
+xextool -r a -m d default.xex
+
+* Convert an xex into an unencrypted binary format:
+xextool -e u -c b -o default-binary.xex default.xex
+
+* Convert unencrypted binary xex back into an encrypted compressed xex:
+xextool -e e -c c -o default.xex default-binary.xex
+
+:: Specifics
+
+This tool enables you to do many things with an xex file if you understand
+how to do so. Some usage examples are given above, but here is some more
+detailed information on a few specific cases.
+
+
+How to make a retail xexs work on a development xbox360
+
+This is quite easy with this tool, just do the following:
+xextool -r a -m d default.xex
+
+Not only will the xex work on a devkit, it will also now work from any media
+and run region independently.
+
+
+How to patch an xex file with an xexp patch file.
+
+Updates to games and system files are provided over xbox live in the form of
+patch files. These updates are stored inside package files in the Cache folder
+on you hard drive. A system update usually has "SU" as part of the filename,
+and a title update (game update) usually has a "TU" as part of the filename.
+
+Note: As of around November 2010 it seems that games are storing their updates
+on the internal hdd in the folder "Content\0000000000000000\xxxxxxxx\000B0000\".
+
+A patch file will only work when used with an untouched version of the original
+xex file it was created for. When you have the original xex file and the patch
+file you want to use with it, do the following to create the updated xex:
+xextool -u -p patch.xexp -o output.xex input.xex
+
+Note: A retail xex requires a retail patch file, a devkit xex requires a devkit
+patch file. If an xex has been converted from a retail to a devkit xex, you need
+to use the retail patch file with the original retail xex, then convert the
+resultant xex file into a devkit xex file.
+
+
+How to reverse engineer and alter the code in an xex file.
+
+Note: While the following still works, it has been superceeded by the separate
+Xex IDA Loader which will load the xex file directly into IDA.
+
+First extract the executable base file and idc script file as follows:
+xextool -b default.exe -i default.idc default.xex
+
+Xextool will tell you how to load the file into ida. If you don't have ida,
+then load it into the disassembler you are using with the same parameters.
+An example of the load info xextool gives you is as follows:
+
+Load basefile into IDA with the following details
+DO NOT load as a PE or EXE file as the format is not valid
+File Type:       Binary file
+Processor Type:  PowerPC: ppc
+Load Address:    0x92000000
+Entry Point:     0x9201DD38
+
+Note: even though this file seems to be a normal exe or dll file it is not!
+You MUST load this file as a binary file, not a pe, exe or dll.
+
+Once the file has been loaded into ida, run the idc script file. It will
+expect the "x360_imports.idc" file included with xextool to be in your
+"ida/idc" directory.
+
+Once you have found any areas you want to change or patch, make these
+changes to the exe basefile you extracted above (default.exe).
+
+Now you need to insert the basefile (default.exe) back into your xex file.
+So do the following to get a fully decrypted and decompressed xex:
+xextool -e u -c b -o default-hack.xex default.xex
+
+Now open default-hack.xex in a hex editor and find where the basefile starts.
+You can search for the "MZ" present in the exe header to find this.
+(Often its around the 0x2000 byte offset mark.)
+Now copy the contents of default.exe into default-hack.xex over the top of
+the basefile that is inside default.xex. It should exactly fill the rest of
+the default-hack.xex file from where you start inserting default.exe.
+Now do:
+xextool -o default-done.xex default-hack
+
+The default-done.xex file will now be resigned and ready to use, unless its
+retail in which case it won't get resigned correctly. When creating the
+default-done.xex file you can also specify encryption and compression options
+for the output file if you wish.</value>
+  </data>
+  <data name="TextBox3.Text" xml:space="preserve">
+    <value>:: History
+
++ = added feature
+- = removed feature
+* = fixed or changed feature
+
+
+
+v6.1
+	* changed update patching to patch multiple device strings as well
+	  as supporting unicode patching.
+	
+	* updated IDC creation to produce similar results as when using the
+	  xex loaders for IDA.
+	
+	* updated the IDC creation to check if the file was loaded as a ppc binary
+	  and to stop and warn the user if not.
+
+v6.0
+	* finally fixed the patching ability where the target file is smaller than
+	  the source file. hopefully it is fixed properly :)
+	
+	* fixed handling of bitfields in version structs (only affected big endian systems)
+	
+	+ added support for natal/kinect related flags
+	
+	+ added support for xex date restrictions
+	
+	+ added support for xex console id restrictions
+	
+	+ added support for xex device id restrictions
+	
+	+ added support for xex keyvault privileges restrictions
+	
+	+ added support for extra debug memory entry
+	
+	+ added support for a few new xex flags and system partitions
+
+v5.5
+	* i forget what changes were made... :P
+
+v5.4
+	+ added the ability to alter a patched xex file to use files from it's game
+	  directory rather than requiring them to be inside a patch package file.
+	
+	+ added special xex specific patches for use on certain xex files
+	
+	* finally fixed the compression problem that has existed since the first
+	  release of this tool. (this only affected a very small number of xex files)
+	
+v5.3
+	+ added xml output to stdout to make using XexTool from inside other
+	  programs easier
+	
+	+ added the ability to add a "bounding path" to an xex
+	
+v5.2
+	* fixed and updated the idc file creation
+	
+v5.1
+	* fixed struct changes that caused invalid library imports
+	
+v5.0
+	+ added patching ability, lets you do: source.xex + patch.xexp = target.xex
+	
+	+ added the ability to dump resources from an xex file
+	
+	+ added "exports" and "exports by name" to idc file creation
+	
+	+ added "sections" and "resources" to idc file creation
+	
+	* fixed handling of unknown image entries
+	
+	* fixed dumping of unknown basefiles
+	
+	* fixed handling of dlls with no execution entrypoint
+	
+v4.3
+	+ added support for loading/saving register blocks to idc creation
+	
+	+ added support for a few new xex flags, eg ramdrive and iptv stuff
+	
+	+ added support for encrypting/decrypting retail "manufacturing" xexs
+	
+	* fixed a memory leak that occurred while encrypting/decrypting xexs
+	
+	* fixed delta compression problem that occurred when a block size was
+	  the same size as the maximum allowed block size
+	
+v4.2
+	+ added remove required revocation check option
+
+	* fixed delta compression problem where it was possible for the last block
+	  to be oversized
+
+v4.1
+	* fixed checking of revocation flag when selecting signature salt
+
+v4.0
+	+ official release that supports retail xexs
+
+	* fixed raw compression problem where it was possible for the last block to
+	  be left off
+
+no log was kept of earlier history - but there were lots of addition and fixes :)</value>
+  </data>
+  <data name="TextBox4.Text" xml:space="preserve">
+    <value>:: History
+
+
++ = added
+-  = remove
+*  = fixed
+
+
+
+v1.6 Beta
+-----------------------------------------------------------
++ added xex compression 
++ added xex uncrypt and encrypt function
++ added idc create funktion for IDA
++ added xex dump function
+*  fix TitleUpdate search bug 
++ added TitleUpdate search function 
+    JQE360 and XBUC webside
+*  fix a bug in the about window
++ added better xex patch function
+  ( The xex file no longer needs to be in the same folder )
++ added better backup function
++ added xex information
+-  remove source code
++ added cmd control for xextool.exe
++ added create xex machine format
+    devkit and retail
++ added complete new ui
++ added more remove options
++ bounding pathname
++ keyvault privileges restriction
++ required revocation check
++ Zero media ID
++ Ap2.5 (Beta)
+
+
+
+v1.5
+-----------------------------------------------------------
++ added better backup Function
++ added Remove and Rename Funktion
++ added xextool check
+*  fix little UI Bug
+*  fix Remove Rename Check Bug
+*  fix Backup check Bug
++ update UI
+
+
+v1.1
+-----------------------------------------------------------
++ update UI 
++ added default_mp.xex Backup
++ added default_mp.xex Patch 
+
+
+v1.0
+-----------------------------------------------------------
+
+= Basic UI
+= Create Backup from default.xex 
+= Remove Region Limits
+  NTSC/U, NTSC/J (Excluded China), PAL and make a Region Free default.xex
+= Remove Media Limits 
+= Remove Dash Limits
+= Removes the Dash Version check good for old Dash versions.
+= xex Patch with xexp
+  Patch the latest version for your game
+
+
+v0.9
+-----------------------------------------------------------
+
+Closed Release</value>
+  </data>
+  <data name="TextBox5.Text" xml:space="preserve">
+    <value>::GUI
+
+GUI:
+mLoaD
+
+
+Xextool:
+xorloser
+- http:\\www.xorloser.com
+
+::Icons
+
+Oxygen Icons:
+Oxygen Team  
+- http://www.oxygen-icons.org
+
+
+::Programs
+
+wxPirs:
+Gael360
+- http://gael360.free.fr/
+
+HxD:
+Maël Hörz 
+- http://mh-nexus.de/de/
+
+ </value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAICAAAAEAIACoEAAAJgAAACAgAAABAAgAqAgAAM4QAAAoAAAAIAAAAEAAAAABACAAAAAAAAAg
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABQAAAAgAAAALAAAADgAAABIAAAAVAAAAGQAA
+        ABwAAAAfAAAAIQAAACMAAAAlAAAAJQAAACUAAAAlAAAAIwAAACEAAAAfAAAAHAAAABkAAAAVAAAAEgAA
+        AA4AAAALAAAACAAAAAUAAAACAAAAAAAAAAAAAAABAAAABQAAAAsAAAAQAAAAFgAAABwAAAAhAAAAJwAA
+        ACwAAAAyAAAANwAAADwAAABAAAAARAAAAEgAAABKAAAASgAAAEgAAABEAAAAQAAAADsAAAA3AAAAMgAA
+        ACwAAAAnAAAAIQAAABwAAAAWAAAAEAAAAAsAAAAFAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA
+        AAMAAAAEAAAABiQAAAczGQAKZjUASItLAJS7ZQDJ3ncA6up/APrqfwD63XcA6b1lAMmKSgCTZTYARjMZ
+        AAokAAAHAAAABgAAAAQAAAADAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAB/fwACz28AYOV8ANnsgAD/7IAA/+yAAf/sgQL/7IIE/+yCBP/sgQL/7IAB/+yA
+        AP/sgAD/5XsA2NJxAGF/fwACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA63wAJ+p/AMjsgAD/7IAA/+yDB//tiBH/7o0b/+6RI//vlCf/75Qn/+6R
+        I//ujRv/7YgR/+yDB//sgAD/7IAA/+x/AMrrggAnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAOl7AEjpfQDx638A/+t/AP/shAn/6IcV/96EHP/fiSj/4I4y/+CS
+        Of/gkjn/4I4y/9+JKP/ehBz/6IcV/+yECf/sgAD/7IAA/+uAAPHtfwBIAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmewBI5nwA+Od9AP/ofQD/6X4A/+qCB//cfA//////////
+        ///////////////////////////////////dfQ//7IMH/+yAAP/sgAD/7IAA/+x/APjtfwBIAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3nwAJ+N5APHkegD/5XsA/+V7AP/mfAD/53wA/9l0
+        Av///////////////////////////////////////////9x2Av/sgAD/7IAA/+yAAP/sgAD/7IAA/+uA
+        APHrggAnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP9/AALfdgDK4HgA/+F4AP/ieQD/43kA/+N6
+        AP/kegD/4HcA/9dyAP/RbQD//////////////////////9NvAP/bdAD/5XsA/+t/AP/sgAD/7IAA/+yA
+        AP/sgAD/7IAA/+t/AMj/fwACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3HYAYd12AP/edgD/33cA/993
+        AP/geAD/4XgA/+F5AP/ieQD/43oA/9ZxAP//////////////////////2XMA/+h9AP/ofQD/6X4A/+p+
+        AP/rfwD/638A/+t/AP/sgAD/7IAA/+l/AGAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAHacgDY2nQA/9t0
+        AP/cdQD/3XUA/912AP/edgD/33cA/993AP/geAD/1G8A///////////////////////XcQD/5XsA/+Z8
+        AP/nfAD/530A/+h9AP/pfgD/6X4A/+p/AP/rfwD/634A2f8AAAEAAAAAAAAAAAAAAAAAAAAA1HIAPNdy
+        AP/YcgD/2HMA/9lzAP/adAD/23QA/9t1AP/cdQD/3XYA/912AP/SbgD//////////////////////9Vw
+        AP/ieQD/43oA/+R6AP/lewD/5XsA/+Z8AP/nfAD/530A/+h9AP/pfgD/6nsAPgAAAAAAAAAAAAAAAAAA
+        AADUbwCJ1HAA/9VwAP/WcQD/13EA/9dyAP/YcgD/2XMA/9lzAP/adAD/23QA/89tAP//////////////
+        ////////0m8A/+B4AP/heAD/4XkA/+J5AP/jegD/43oA/+R6AP/lewD/5XsA/+Z8AP/mfACJAAAAAAAA
+        AAAAAAAAAAAAANBtAMHSbgD/0m8A/9NvAP/UcAD/1XAA/9VwAP/WcQD/13EA/9dyAP/YcgD/zWsA////
+        ///////////////////QbQD/3XYA/952AP/fdwD/33cA/+B4AP/heAD/4XkA/+J5AP/jegD/5HoA/+R5
+        AMEAAAAAAAAAAAAAAAAAAAAAzmwA5c9sAP/QbQD/0W0A/9FuAP/SbgD/028A/9NvAP/UcAD/1XAA/9Zx
+        AP/MagD//////////////////////85sAP/bdAD/23UA/9x1AP/ddQD/3XYA/952AP/fdwD/33cA/+B4
+        AP/heAD/4ngA5gAAAAAAAAAAAAAAAAAAAADLagD5zGoA/81rAP/OawD/z2wA/89tAP/RbwT/0nIH/9N0
+        Cv/Qcgn/ym0H/8ZpBv//////////////////////zW8I/9p4C//aeQr/23kK/9t4B//bdwT/23UA/9x1
+        AP/ddgD/3nYA/953AP/fdgD5AAAAAAAAAAAAAAAAAAAAAMhoAPnKaQD/y2kA/8xrAf/Pcgz/0XcU/9J4
+        Fv/SeRb/03kW/8pxEP/////////////////////////////////NcxD/2X0W/9p+Fv/afhb/234W/9x/
+        Fv/cfhT/23oM/9p1Af/bdAD/3HUA/9x0APkAAAAAAAAAAAAAAAAAAAAAxmUA5sdnAP/Lbwz/z3sf/9F9
+        Iv/RfSL/0n4i/9N+Iv/TfiL/ynQZ/////////////////////////////////813Gf/ZgiL/2YIi/9qD
+        Iv/agyL/24Qi/9yEIv/chSL/3YQf/9p6DP/ZcwD/2nIA5QAAAAAAAAAAAAAAAAAAAADDZADBx24O/9CC
+        Lf/Qgi7/0YIu/9KDLv/Sgy7/04Mu/9OELv/QgCr/ynki/8p5Iv/LeiL/y3oi/8x6Iv/MeyL/1IMq/9mH
+        Lv/ZiC7/2ogu/9qILv/biS7/24ku/9yKLv/dii7/3Yst/9l5Dv/XcQDBAAAAAAAAAAAAAAAAAAAAAL9i
+        AInDaAj/0Ic5/9GIOf/SiDn/0og5/9OJOf/TiTn/1Io5/9SKOf/Vijn/1Ys5/9aLOf/ViTf/1Yk2/9eM
+        Of/YjTn/2Y05/9mNOf/ajTn/2o45/9uOOf/bjzn/3I85/92POf/dkDn/1XQI/9RvAIkAAAAAAAAAAAAA
+        AAAAAAAAvWIAPr5hAP/NhDb/0o1F/9KORf/TjkX/045F/9SPRf/Uj0X/1ZBF/9WQRf/TjED/05dX/+XD
+        of/mxaP/1Zpd/9SNP//ZkkX/2ZNF/9qTRf/bk0X/25RF/9yURf/clUX/3ZVF/9qMNv/RbgD/0G4APAAA
+        AAAAAAAAAAAAAAAAAAD/AAABvGAA2cNxGv/Tk1H/05RR/9SUUf/UlVH/1ZVR/9WVUf/WlVH/1pVQ/9aj
+        bv/+/fv////////////+/v3/2qp4/9iWTv/amFH/25lR/9uZUf/cmVH/3JpR/92aUf/dmlH/03sa/81r
+        ANj/AAABAAAAAAAAAAAAAAAAAAAAAAAAAAC5XABgul8A/86LRv/Vml3/1Zpd/9WbXf/Wm13/1ptd/9eb
+        Xf/QkE3/9ObZ///////////////////////47+b/0Y9K/9ueXf/bn13/3J9d/9yfXf/doF3/3aBd/9mS
+        Rv/LagD/zWkAYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH9/AAK3XQDIu2UN/9SbYf/XoWn/16Fp/9ih
+        af/YoWn/2KJp/8+RUf/79/L///////////////////////7+/f/QkVD/3KRp/92laf/dpWn/3aVp/96m
+        af/coWH/ym8N/8dnAMr/fwACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALdbACe0WgDxvm0b/9ek
+        cP/Zp3X/2ah1/9qodf/aqHX/1J5m/+3axv//////////////////////8eLS/9WdY//eq3X/3qt1/96r
+        df/fq3X/3qlw/8p2G//DZADxxGgAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALRY
+        AEiyWgD4vGwb/9emdP/broH/266B/9yvgf/cr4H/1KFv//fu5f////////////jx6v/VpHL/37CB/9+x
+        gf/fsYH/4LGB/92qdP/HdBv/wWIA+MJjAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAALFYAEiwWADxtmEM/86VW//etYz/3raN/962jf/etYv/1aNy/9uyif/cs4r/1qRx/9+1
+        iv/ht43/4beN/+G3jP/UmVv/wGgM/71hAPG/XwBIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAALBUACevVwDKsFgA/7prHf/Oll7/3raP/+G9mf/hvZn/4r2Z/+K+
+        mf/ivpn/4r6Z/+C4j//SmF7/wXAd/7leAP+6XwDIvWIAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH9/AAKtVgBhrVcA2K9XAP+wWQL/um0f/8J+
+        Of/Hhkb/x4dG/8R/Of+9bx//tV0C/7VbAP+2WwDZt1wAYH9/AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAABrlUAPK1V
+        AImuVQDBrVYA5a9XAPmwWAD5sFcA5rFYAMGyWQCJtFoAPv8AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP////////////AP///AA///AAD//gAAf/wA
+        AD/4AAAf8AAAD/AAAA/gAAAH4AAAB8AAAAPAAAADwAAAA8AAAAPAAAADwAAAA8AAAAPAAAAD4AAAB+AA
+        AAfwAAAP8AAAD/gAAB/8AAA//gAAf/8AAP//wAP///AP////////////KAAAACAAAABAAAAAAQAIAAAA
+        AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8DAgD/BQMA/xsOAP8fEQD/PCAA/z8iAP9lNgD/ZjcA/4tL
+        AP+MSwD/rVYA/65WAP+vVwD/sFgA/7FZAP+yWQD/s1oA/7RbAP+1WwD/tV0C/7ZcAP+3XQD/uF0A/7le
+        AP+6XwD/u18A/7xgAP+9YQD/vmEA/7lkAP+8ZgD/tmEM/7tlDf+8bBv/vm0b/7prHf+6bR//vW8f/8Bj
+        AP/BYwD/wmQA/8NlAP/EZQD/xWYA/8ZmAP/GaQb/yGgA/8loAP/KaQD/y2oA/8xqAP/NawD/zmsA/85s
+        AP/PbAD/ym0H/8NoCP/AaAz/x24O/81vCP/Kbw3/y28M/9BtAP/RbgD/0m4A/9RvAP/RbwT/z3AA/89y
+        DP/RcQD/1HAA/9ZxAP/XcgD/0nIH/9hyAP/acwD/2XQC/9p0AP/cdQD/3HYA/952AP/bdwT/3ngA/9t4
+        B//Qcgn/03QK/9V0CP/aeAr/2XkO/9p6DP/cfA//ynEQ/81zEP/DcRr/x3Qb/8FwHf/KdBn/ynYb/813
+        Gf/Pex//0XcU/9J4Fv/ZfRb/2n4W/9x+Ff/Texr/4HcA/+B4AP/ieQD/43oA/+R6AP/lfAD/5nwA/+h9
+        AP/pfgD/6n4A/8p5Iv/LeiL/zHoi/9F9Iv/SfiL/wn45/8R/Of/dhB//3oQc/+yAAP/qggf/7IIF/+yE
+        Cf/ohxX/7YgR/+6NG//ZgiL/2oMi/9uEIv/chCL/0IAq/9SDKv/Qgi3/0oMu/9OELv/Zhy7/34ko/9mI
+        Lv/aiC7/3Iot/82ENv/ViTb/2ow2/9CHOf/RiDn/0og5/9SKOf/Wizn/14w5/9SNP//YjTn/2o05/9qO
+        Of/cjzn/3ZA5/+6RI//vlCf/4I4y/+CSOf/Hhkb/zotG/9OMQP/SjUX/0o5F/9SPRf/Rj0r/1ZBF/9mS
+        Rf/ak0X/25RF/9yURf/QkE3/2JZO/8+RUf/OlVv/zpZe/9CRUP/Tk1H/05RR/9SUUf/VlVH/1pVQ/9OX
+        V//amFH/25lR/9yZUf/cmlH/3ZpR/9SZW//SmF7/1Zpd/9abXf/Xm13/255d/9yfXf/doF3/1Jth/9Wd
+        Y//Unmb/3KFh/9ehaf/UoW//1qNu/9ihaf/Yomn/3KRp/92laf/epmn/1aNy/9Wkcv/WpHH/16Rw/9em
+        dP/Zp3X/3qlw/9modf/aqHX/3ap0/96rdf/fq3X/2qp4/9uugf/cr4H/37CB/9uyif/cs4r/3rWL/9+1
+        iv/etYz/3raN/+Cxgf/ht4z/4LiP/+G9mf/ivZn/4r6Z/+XDof/mxaP/7drG//Hi0v/05tn/9+7l//jv
+        5v/48er/+/fy//79+//+/v3//////wAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAACAwUHCh9TdHRTHwkIBgQCAAAAAAAA
+        AAAAAAAAAAAAAB5GcH5+fn6AgH5+fn5xRh8AAAAAAAAAAAAAAAAAAAB0dH5+gYOEoqOjooSDgX5+fn4A
+        AAAAAAAAAAAAAAAAcnN+dIGCfY+kpaWkj32CgX5+fn4AAAAAAAAAAAAAAHBxc3Jzf1v+/v7+/v7+/luB
+        fn5+fn4AAAAAAAAAAABsb29vb3FyTf7+/v7+/v7+UH5+fn5+fn4AAAAAAAAAUWxsbG1vb29rST/+/v7+
+        R05vdH5+fn5+fn4AAAAAAABPUVFra2xsbG1uSP7+/v5Lc3JzdHR0dH5+fgAAAAAAS0xOTk9PT1Fra2xH
+        /v7+/ktvcXJxc3Nzc3R0dAAAAABISUtLS05PUFBQUUH+/v7+R21ub3FvcXJzc3NyAAAAAEJHR0hLS0tL
+        S05ON/7+/v5BbG1sbW5ub29vcXEAAAAAQEFBQkdHR0hJS0s0/v7+/j9RUWtRbG1sbW5vbwAAAAA2Nz8/
+        P0FHQUdHSDP+/v7+NkxOUFFRUWtrbG1uAAAAADMzNTY/P0NXV1U4Lv7+/v48WFpYWFROUFBRUVEAAAAA
+        MDIxM0VlZmZmXP7+/v7+/l1naGhpaWlaT09QTwAAAAAtLT5keHh5eXlh/v7+/v7+Y4aFhoaGiId8WktM
+        AAAAACo7i4uLjIuNjYl1dnZ2d3eKjpCQkZKSkpKSWUkAAAAAJzmWl5iYmZiZmZmZmpSUm52dnZ+fn5+h
+        oaFXRwAAAAAdHZOpqqqqq6utq6i98/TFnK6vr6+wsbGxlUBAAAAAABsbXri5uru7u7y80fz+/v3js76/
+        v8DBwsJqNjcAAAAAABgZp8XFxcbHx7f3/v7+/vmsyMnJycrKrjIzAAAAAAAAFxYhy8/P09LTtPv+/v7+
+        /bfU1dXV1s49LzAAAAAAAAAAExMj2t7e3N/N9f7+/v72zOHh4eLdYissAAAAAAAAAAAAEREi2+Tk5eTQ
+        +P7++tjm5ubt4F8oKQAAAAAAAAAAAAAADw8gtens7OnY5+jZ6u7u7sM6HB0AAAAAAAAAAAAAAAAADg0O
+        Jbbv8PDx8vLy78RgGBkaAAAAAAAAAAAAAAAAAAAADAwMDQ4leqameyYUExUWFwAAAAAAAAAAAAAAAAAA
+        AAAAAAsLCwwMDQ4ODxAREgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////////8A///8AD//8AAP/+AAB//AAAP/gA
+        AB/wAAAP8AAAD+AAAAfgAAAHwAAAA8AAAAPAAAADwAAAA8AAAAPAAAADwAAAA8AAAAPgAAAH4AAAB/AA
+        AA/wAAAP+AAAH/wAAD/+AAB//wAA///AA///8A////////////8=
+</value>
+  </data>
+</root>
