@@ -20,12 +20,6 @@ namespace XexToolGUI
         public static Process process { get; set; }
         public static void CurrentProcess(string Args)
         {
-            if(process == null)
-            {
-
-            }
-            else
-            {
             process.StartInfo.FileName = "xextool.exe";
             process.StartInfo.Arguments = Args;
             process.StartInfo.UseShellExecute = false;
@@ -34,7 +28,7 @@ namespace XexToolGUI
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             process.Start();
             process.BeginOutputReadLine();
-            }
+            process.Close();
 
         }
 

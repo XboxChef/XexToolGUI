@@ -20,17 +20,9 @@ namespace XexToolGUI
         }
         private void Process(string arg)
         {
-            if (Program.process == null)
-            {
-                Program.process = new Process();
-                Program.process.OutputDataReceived += new DataReceivedEventHandler(this.ProcessOutputDataReceived);
-                Program.CurrentProcess(arg);
-            }
-            else
-            {
-                Program.process.OutputDataReceived += new DataReceivedEventHandler(this.ProcessOutputDataReceived);
-                Program.CurrentProcess(arg);
-            }
+            Program.process = new Process();
+            Program.process.OutputDataReceived += new DataReceivedEventHandler(this.ProcessOutputDataReceived);
+            Program.CurrentProcess(arg);
         }
         private void Dumpbase_Click(object sender, EventArgs e)
         {

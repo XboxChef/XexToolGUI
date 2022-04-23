@@ -23,7 +23,7 @@ namespace XexToolGUI
             this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
             this.labelCopyright.Text = "Copyright © Serenity 2022";
             this.labelCompanyName.Text = "Thanks to:";
-            this.textBoxDescription.Text = "xorloser  for your Program and your Hard work" + "\r\n" + "Open Sourced By Serenity." + "\r\n" + "Copyright ©  mLoaD 2011";
+            this.textBoxDescription.Text = "Made By mLoaD \r\n xorloser  for your Program and your Hard work \r\n Open Sourced By Serenity.";
         }
 
         #region Assembly Attribute Accessors
