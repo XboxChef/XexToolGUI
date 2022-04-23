@@ -1,6 +1,5 @@
-by mLoaD
-<img src="https://user-images.githubusercontent.com/34622204/164943219-412e9d6e-9192-44b2-8968-ff5006d991eb.PNG" width="50%" height="50%">
-Open Sourced & optimized By Serenity							   
+<img src="https://user-images.githubusercontent.com/34622204/164943219-412e9d6e-9192-44b2-8968-ff5006d991eb.PNG" width="100%" height="100%">
+by mLoaD Open Sourced & optimized By Serenity							   
 							   								   
 Build and Tested on Windows 10 64Bit with .NetFramework 4.8
 								   
