@@ -263,7 +263,7 @@ namespace XexToolGUI
             // 
             this.SelectxexToolStripMenuItem1.Image = global::XexToolGUI.Properties.Resources.SelectxexToolStripMenuItem1_Image;
             this.SelectxexToolStripMenuItem1.Name = "SelectxexToolStripMenuItem1";
-            this.SelectxexToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
+            this.SelectxexToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.SelectxexToolStripMenuItem1.Text = "Select xex";
             this.SelectxexToolStripMenuItem1.ToolTipText = "Open xex file";
             this.SelectxexToolStripMenuItem1.Click += new System.EventHandler(this.SelectxexToolStripMenuItem1_Click);
@@ -272,7 +272,7 @@ namespace XexToolGUI
             // 
             this.SelectToolStripMenuItem.Image = global::XexToolGUI.Properties.Resources.SelectToolStripMenuItem_Image;
             this.SelectToolStripMenuItem.Name = "SelectToolStripMenuItem";
-            this.SelectToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.SelectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SelectToolStripMenuItem.Text = "Select xexp";
             this.SelectToolStripMenuItem.ToolTipText = "Open xexp file";
             this.SelectToolStripMenuItem.Click += new System.EventHandler(this.SelectToolStripMenuItem_Click);
@@ -281,7 +281,7 @@ namespace XexToolGUI
             // 
             this.SavexexToolStripMenuItem.Image = global::XexToolGUI.Properties.Resources.SavexexToolStripMenuItem_Image;
             this.SavexexToolStripMenuItem.Name = "SavexexToolStripMenuItem";
-            this.SavexexToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.SavexexToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SavexexToolStripMenuItem.Text = "Save As";
             this.SavexexToolStripMenuItem.ToolTipText = "Save file";
             // 
@@ -289,7 +289,7 @@ namespace XexToolGUI
             // 
             this.ClearToolStripMenuItem1.Image = global::XexToolGUI.Properties.Resources.Clear2ToolStripButton_Image;
             this.ClearToolStripMenuItem1.Name = "ClearToolStripMenuItem1";
-            this.ClearToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
+            this.ClearToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.ClearToolStripMenuItem1.Text = "Clear";
             this.ClearToolStripMenuItem1.ToolTipText = "Clear all Box";
             this.ClearToolStripMenuItem1.Click += new System.EventHandler(this.ClearToolStripMenuItem1_Click);
@@ -298,7 +298,7 @@ namespace XexToolGUI
             // 
             this.ExitToolStripMenuItem2.Image = global::XexToolGUI.Properties.Resources.ExitToolStripMenuItem_Image;
             this.ExitToolStripMenuItem2.Name = "ExitToolStripMenuItem2";
-            this.ExitToolStripMenuItem2.Size = new System.Drawing.Size(133, 22);
+            this.ExitToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem2.Text = "Exit";
             this.ExitToolStripMenuItem2.ToolTipText = "Close App";
             this.ExitToolStripMenuItem2.Click += new System.EventHandler(this.ExitToolStripMenuItem2_Click);

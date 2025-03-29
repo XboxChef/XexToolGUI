@@ -127,7 +127,7 @@ others who tested, reported bugs, gave encouragement and provided info to
 further improve this tool.</value>
   </data>
   <data name="TextBox1.Text" xml:space="preserve">
-    <value>XexTool v6.1  -  xorloser 2006-2010
+    <value>XexTool v6.3  -  xorloser 2006-2010
 
 Usage:    XexTool &lt;options&gt; &lt;xex filename&gt;
 
@@ -376,7 +376,7 @@ So do the following to get a fully decrypted and decompressed xex:
 xextool -e u -c b -o default-hack.xex default.xex
 
 Now open default-hack.xex in a hex editor and find where the basefile starts.
-You can search for the "MZ" present in the exe header to find this.
+You can search for the "MZ" present in the exe header to find 
 (Often its around the 0x2000 byte offset mark.)
 Now copy the contents of default.exe into default-hack.xex over the top of
 the basefile that is inside default.xex. It should exactly fill the rest of

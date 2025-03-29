@@ -18,12 +18,12 @@ namespace XexToolGUI
             InitializeComponent();
             player = new System.Media.SoundPlayer(new MemoryStream(Properties.Resources.About_sound));
             player.PlayLooping();
-            this.Text = "Info XexTool GUI";
-            this.labelProductName.Text = "XexToolGUI for xorloser's xextool";
-            this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
-            this.labelCopyright.Text = "Copyright © Serenity 2022";
-            this.labelCompanyName.Text = "Thanks to:";
-            this.textBoxDescription.Text = "Made By mLoaD \r\n xorloser  for your Program and your Hard work \r\n Open Sourced By Serenity.";
+            Text = "Info XexTool GUI";
+            labelProductName.Text = "XexToolGUI for xorloser's xextool";
+            labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
+            labelCopyright.Text = "Copyright © Serenity 2022";
+            labelCompanyName.Text = "Thanks to:";
+            textBoxDescription.Text = "Made By mLoaD \r\n xorloser  for your Program and your Hard work \r\n Open Sourced By Serenity.";
         }
 
         #region Assembly Attribute Accessors

@@ -30,136 +30,136 @@ namespace XexToolGUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TitleUpdate));
-            this.Xclosetu = new System.Windows.Forms.Button();
-            this.XUpdatexbuc = new System.Windows.Forms.Button();
-            this.XUpdateJQE360 = new System.Windows.Forms.Button();
-            this.XMediaID = new System.Windows.Forms.TextBox();
-            this.Label1 = new System.Windows.Forms.Label();
-            this.GroupBox1 = new System.Windows.Forms.GroupBox();
-            this.Xcleartu = new System.Windows.Forms.Button();
-            this.Label2 = new System.Windows.Forms.Label();
-            this.XGamename = new System.Windows.Forms.TextBox();
-            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.GroupBox1.SuspendLayout();
-            this.SuspendLayout();
+            Xclosetu = new System.Windows.Forms.Button();
+            XUpdatexbuc = new System.Windows.Forms.Button();
+            XUpdateJQE360 = new System.Windows.Forms.Button();
+            XMediaID = new System.Windows.Forms.TextBox();
+            Label1 = new System.Windows.Forms.Label();
+            GroupBox1 = new System.Windows.Forms.GroupBox();
+            Xcleartu = new System.Windows.Forms.Button();
+            Label2 = new System.Windows.Forms.Label();
+            XGamename = new System.Windows.Forms.TextBox();
+            ToolTip1 = new System.Windows.Forms.ToolTip(components);
+            GroupBox1.SuspendLayout();
+            SuspendLayout();
             // 
             // Xclosetu
             // 
-            this.Xclosetu.Image = ((System.Drawing.Image)(resources.GetObject("Xclosetu.Image")));
-            this.Xclosetu.Location = new System.Drawing.Point(202, 121);
-            this.Xclosetu.Name = "Xclosetu";
-            this.Xclosetu.Size = new System.Drawing.Size(88, 34);
-            this.Xclosetu.TabIndex = 7;
-            this.Xclosetu.Text = "Cancel";
-            this.Xclosetu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Xclosetu.UseVisualStyleBackColor = true;
-            this.Xclosetu.Click += new System.EventHandler(this.Xclosetu_Click);
+            Xclosetu.Image = ((System.Drawing.Image)(resources.GetObject("Xclosetu.Image")));
+            Xclosetu.Location = new System.Drawing.Point(202, 121);
+            Xclosetu.Name = "Xclosetu";
+            Xclosetu.Size = new System.Drawing.Size(88, 34);
+            Xclosetu.TabIndex = 7;
+            Xclosetu.Text = "Cancel";
+            Xclosetu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            Xclosetu.UseVisualStyleBackColor = true;
+            Xclosetu.Click += new System.EventHandler(Xclosetu_Click);
             // 
             // XUpdatexbuc
             // 
-            this.XUpdatexbuc.Image = ((System.Drawing.Image)(resources.GetObject("XUpdatexbuc.Image")));
-            this.XUpdatexbuc.Location = new System.Drawing.Point(202, 37);
-            this.XUpdatexbuc.Name = "XUpdatexbuc";
-            this.XUpdatexbuc.Size = new System.Drawing.Size(88, 34);
-            this.XUpdatexbuc.TabIndex = 0;
-            this.XUpdatexbuc.Text = "xbuc";
-            this.XUpdatexbuc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ToolTip1.SetToolTip(this.XUpdatexbuc, "http:\\\\www.xbuc.net");
-            this.XUpdatexbuc.UseVisualStyleBackColor = true;
-            this.XUpdatexbuc.Click += new System.EventHandler(this.XUpdatexbuc_Click);
+            XUpdatexbuc.Image = ((System.Drawing.Image)(resources.GetObject("XUpdatexbuc.Image")));
+            XUpdatexbuc.Location = new System.Drawing.Point(202, 37);
+            XUpdatexbuc.Name = "XUpdatexbuc";
+            XUpdatexbuc.Size = new System.Drawing.Size(88, 34);
+            XUpdatexbuc.TabIndex = 0;
+            XUpdatexbuc.Text = "xbuc";
+            XUpdatexbuc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            ToolTip1.SetToolTip(XUpdatexbuc, "http:\\\\www.xbuc.net");
+            XUpdatexbuc.UseVisualStyleBackColor = true;
+            XUpdatexbuc.Click += new System.EventHandler(XUpdatexbuc_Click);
             // 
             // XUpdateJQE360
             // 
-            this.XUpdateJQE360.Image = ((System.Drawing.Image)(resources.GetObject("XUpdateJQE360.Image")));
-            this.XUpdateJQE360.Location = new System.Drawing.Point(108, 37);
-            this.XUpdateJQE360.Name = "XUpdateJQE360";
-            this.XUpdateJQE360.Size = new System.Drawing.Size(88, 34);
-            this.XUpdateJQE360.TabIndex = 1;
-            this.XUpdateJQE360.Text = "JQE360";
-            this.XUpdateJQE360.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ToolTip1.SetToolTip(this.XUpdateJQE360, "http:\\\\www.JQE360.com");
-            this.XUpdateJQE360.UseVisualStyleBackColor = true;
-            this.XUpdateJQE360.Click += new System.EventHandler(this.XUpdateJQE360_Click);
+            XUpdateJQE360.Image = ((System.Drawing.Image)(resources.GetObject("XUpdateJQE360.Image")));
+            XUpdateJQE360.Location = new System.Drawing.Point(108, 37);
+            XUpdateJQE360.Name = "XUpdateJQE360";
+            XUpdateJQE360.Size = new System.Drawing.Size(88, 34);
+            XUpdateJQE360.TabIndex = 1;
+            XUpdateJQE360.Text = "JQE360";
+            XUpdateJQE360.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            ToolTip1.SetToolTip(XUpdateJQE360, "http:\\\\www.JQE360.com");
+            XUpdateJQE360.UseVisualStyleBackColor = true;
+            XUpdateJQE360.Click += new System.EventHandler(XUpdateJQE360_Click);
             // 
             // XMediaID
             // 
-            this.XMediaID.Location = new System.Drawing.Point(9, 45);
-            this.XMediaID.Name = "XMediaID";
-            this.XMediaID.Size = new System.Drawing.Size(77, 20);
-            this.XMediaID.TabIndex = 2;
-            this.ToolTip1.SetToolTip(this.XMediaID, "Only Media ID");
+            XMediaID.Location = new System.Drawing.Point(9, 45);
+            XMediaID.Name = "XMediaID";
+            XMediaID.Size = new System.Drawing.Size(77, 20);
+            XMediaID.TabIndex = 2;
+            ToolTip1.SetToolTip(XMediaID, "Only Media ID");
             // 
             // Label1
             // 
-            this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(6, 16);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(50, 26);
-            this.Label1.TabIndex = 3;
-            this.Label1.Text = "\r\nMedia ID";
+            Label1.AutoSize = true;
+            Label1.Location = new System.Drawing.Point(6, 16);
+            Label1.Name = "Label1";
+            Label1.Size = new System.Drawing.Size(50, 26);
+            Label1.TabIndex = 3;
+            Label1.Text = "\r\nMedia ID";
             // 
             // GroupBox1
             // 
-            this.GroupBox1.Controls.Add(this.Xcleartu);
-            this.GroupBox1.Controls.Add(this.Xclosetu);
-            this.GroupBox1.Controls.Add(this.Label2);
-            this.GroupBox1.Controls.Add(this.XGamename);
-            this.GroupBox1.Controls.Add(this.XUpdatexbuc);
-            this.GroupBox1.Controls.Add(this.XUpdateJQE360);
-            this.GroupBox1.Controls.Add(this.XMediaID);
-            this.GroupBox1.Controls.Add(this.Label1);
-            this.GroupBox1.Location = new System.Drawing.Point(14, 14);
-            this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(299, 166);
-            this.GroupBox1.TabIndex = 7;
-            this.GroupBox1.TabStop = false;
-            this.GroupBox1.Text = "Download Title Updates on the following pages";
+            GroupBox1.Controls.Add(Xcleartu);
+            GroupBox1.Controls.Add(Xclosetu);
+            GroupBox1.Controls.Add(Label2);
+            GroupBox1.Controls.Add(XGamename);
+            GroupBox1.Controls.Add(XUpdatexbuc);
+            GroupBox1.Controls.Add(XUpdateJQE360);
+            GroupBox1.Controls.Add(XMediaID);
+            GroupBox1.Controls.Add(Label1);
+            GroupBox1.Location = new System.Drawing.Point(14, 14);
+            GroupBox1.Name = "GroupBox1";
+            GroupBox1.Size = new System.Drawing.Size(299, 166);
+            GroupBox1.TabIndex = 7;
+            GroupBox1.TabStop = false;
+            GroupBox1.Text = "Download Title Updates on the following pages";
             // 
             // Xcleartu
             // 
-            this.Xcleartu.Image = ((System.Drawing.Image)(resources.GetObject("Xcleartu.Image")));
-            this.Xcleartu.Location = new System.Drawing.Point(108, 121);
-            this.Xcleartu.Name = "Xcleartu";
-            this.Xcleartu.Size = new System.Drawing.Size(88, 34);
-            this.Xcleartu.TabIndex = 8;
-            this.Xcleartu.Text = "Clear";
-            this.Xcleartu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Xcleartu.UseVisualStyleBackColor = true;
-            this.Xcleartu.Click += new System.EventHandler(this.Xcleartu_Click);
+            Xcleartu.Image = ((System.Drawing.Image)(resources.GetObject("Xcleartu.Image")));
+            Xcleartu.Location = new System.Drawing.Point(108, 121);
+            Xcleartu.Name = "Xcleartu";
+            Xcleartu.Size = new System.Drawing.Size(88, 34);
+            Xcleartu.TabIndex = 8;
+            Xcleartu.Text = "Clear";
+            Xcleartu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            Xcleartu.UseVisualStyleBackColor = true;
+            Xcleartu.Click += new System.EventHandler(Xcleartu_Click);
             // 
             // Label2
             // 
-            this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(6, 79);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(66, 13);
-            this.Label2.TabIndex = 5;
-            this.Label2.Text = "Game Name";
+            Label2.AutoSize = true;
+            Label2.Location = new System.Drawing.Point(6, 79);
+            Label2.Name = "Label2";
+            Label2.Size = new System.Drawing.Size(66, 13);
+            Label2.TabIndex = 5;
+            Label2.Text = "Game Name";
             // 
             // XGamename
             // 
-            this.XGamename.Location = new System.Drawing.Point(9, 95);
-            this.XGamename.Name = "XGamename";
-            this.XGamename.Size = new System.Drawing.Size(281, 20);
-            this.XGamename.TabIndex = 4;
-            this.ToolTip1.SetToolTip(this.XGamename, "Name of the Game");
+            XGamename.Location = new System.Drawing.Point(9, 95);
+            XGamename.Name = "XGamename";
+            XGamename.Size = new System.Drawing.Size(281, 20);
+            XGamename.TabIndex = 4;
+            ToolTip1.SetToolTip(XGamename, "Name of the Game");
             // 
             // TitleUpdate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 193);
-            this.Controls.Add(this.GroupBox1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "TitleUpdate";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Search TitleUpdate";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TitleUpdate_FormClosing);
-            this.GroupBox1.ResumeLayout(false);
-            this.GroupBox1.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(330, 193);
+            Controls.Add(GroupBox1);
+            Icon = ((System.Drawing.Icon)(resources.GetObject("$Icon")));
+            Name = "TitleUpdate";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Search TitleUpdate";
+            FormClosing += new System.Windows.Forms.FormClosingEventHandler(TitleUpdate_FormClosing);
+            GroupBox1.ResumeLayout(false);
+            GroupBox1.PerformLayout();
+            ResumeLayout(false);
 
         }
 

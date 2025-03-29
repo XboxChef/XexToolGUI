@@ -29,46 +29,46 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpReverse));
-            this.PictureBox1 = new System.Windows.Forms.PictureBox();
-            this.TextBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
-            this.SuspendLayout();
+            PictureBox1 = new System.Windows.Forms.PictureBox();
+            TextBox1 = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(PictureBox1)).BeginInit();
+            SuspendLayout();
             // 
             // PictureBox1
             // 
-            this.PictureBox1.Image = global::XexToolGUI.Properties.Resources.DumbToolStripMenuItem_Image;
-            this.PictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.PictureBox1.Name = "PictureBox1";
-            this.PictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.PictureBox1.TabIndex = 5;
-            this.PictureBox1.TabStop = false;
+            PictureBox1.Image = global::XexToolGUI.Properties.Resources.DumbToolStripMenuItem_Image;
+            PictureBox1.Location = new System.Drawing.Point(12, 12);
+            PictureBox1.Name = "PictureBox1";
+            PictureBox1.Size = new System.Drawing.Size(24, 24);
+            PictureBox1.TabIndex = 5;
+            PictureBox1.TabStop = false;
             // 
             // TextBox1
             // 
-            this.TextBox1.Location = new System.Drawing.Point(42, 12);
-            this.TextBox1.Multiline = true;
-            this.TextBox1.Name = "TextBox1";
-            this.TextBox1.ReadOnly = true;
-            this.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TextBox1.Size = new System.Drawing.Size(397, 172);
-            this.TextBox1.TabIndex = 4;
-            this.TextBox1.Text = resources.GetString("TextBox1.Text");
+            TextBox1.Location = new System.Drawing.Point(42, 12);
+            TextBox1.Multiline = true;
+            TextBox1.Name = "TextBox1";
+            TextBox1.ReadOnly = true;
+            TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            TextBox1.Size = new System.Drawing.Size(397, 172);
+            TextBox1.TabIndex = 4;
+            TextBox1.Text = resources.GetString("TextBox1.Text");
             // 
             // HelpReverse
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 196);
-            this.Controls.Add(this.PictureBox1);
-            this.Controls.Add(this.TextBox1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "HelpReverse";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Help Reverse";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HelpReverse_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(451, 196);
+            Controls.Add(PictureBox1);
+            Controls.Add(TextBox1);
+            Icon = ((System.Drawing.Icon)(resources.GetObject("$Icon")));
+            Name = "HelpReverse";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Help Reverse";
+            FormClosing += new System.Windows.Forms.FormClosingEventHandler(HelpReverse_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(PictureBox1)).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

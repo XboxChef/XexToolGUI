@@ -23,27 +23,27 @@ namespace XexToolGUI
         private void UpdateTextBoxText(string text)
         {
             Debug.WriteLine(text);
-            if (this.CheckBox1.Checked)
+            if (CheckBox1.Checked)
             {
-                this.xmlLogBox.AppendText(Environment.NewLine);
-                this.xmlLogBox.AppendText(text + Environment.NewLine);
+                xmlLogBox.AppendText(Environment.NewLine);
+                xmlLogBox.AppendText(text + Environment.NewLine);
             }
             else
-                this.xmlLogBox.Text = text;
+                xmlLogBox.Text = text;
         }
 
         private void ProcessOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.Data))
                 return;
-            this.Invoke((Delegate)new xml.UpdateTextBoxTextDelegate(this.UpdateTextBoxText), (object)e.Data);
+            Invoke((Delegate)new xml.UpdateTextBoxTextDelegate(UpdateTextBoxText), (object)e.Data);
         }
 
         private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.xmlLogBox.Text = "";
-            this.SearchxexTextBox.Text = "";
-            this.SavexmlTextBox.Text = "";
+            xmlLogBox.Text = "";
+            SearchxexTextBox.Text = "";
+            SavexmlTextBox.Text = "";
         }
 
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,23 +68,23 @@ namespace XexToolGUI
 
         private void openxexButton1_Click(object sender, EventArgs e)
         {
-            int num = (int)this.OpenFileDialog1.ShowDialog();
-            this.SearchxexTextBox.Text = this.OpenFileDialog1.FileName;
+            OpenFileDialog1.ShowDialog();
+            SearchxexTextBox.Text = OpenFileDialog1.FileName;
         }
 
         private void savexmlButton2_Click(object sender, EventArgs e)
         {
-            int num = (int)this.SaveFileDialog1.ShowDialog();
-            this.SavexmlTextBox.Text = this.SaveFileDialog1.FileName;
+            SaveFileDialog1.ShowDialog();
+            SavexmlTextBox.Text = SaveFileDialog1.FileName;
         }
         private void CreatexmlButton_Click(object sender, EventArgs e)
         {
-            Process(" -x " + this.SavexmlTextBox.Text + " " + this.SearchxexTextBox.Text + " >game.xml");
+            Process(" -x " + SavexmlTextBox.Text + " " + SearchxexTextBox.Text + " >game.xml");
         }
         private void Process(string arg)
         {
                 Program.process = new Process();
-                Program.process.OutputDataReceived += new DataReceivedEventHandler(this.ProcessOutputDataReceived);
+                Program.process.OutputDataReceived += new DataReceivedEventHandler(ProcessOutputDataReceived);
                 Program.CurrentProcess(arg);
         }
         public delegate void UpdateTextBoxTextDelegate(string text);

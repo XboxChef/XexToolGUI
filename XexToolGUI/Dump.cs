@@ -21,32 +21,32 @@ namespace XexToolGUI
         private void Process(string arg)
         {
             Program.process = new Process();
-            Program.process.OutputDataReceived += new DataReceivedEventHandler(this.ProcessOutputDataReceived);
+            Program.process.OutputDataReceived += new DataReceivedEventHandler(ProcessOutputDataReceived);
             Program.CurrentProcess(arg);
         }
         private void Dumpbase_Click(object sender, EventArgs e)
         {
-            this.dumpLogBox.Text = "";
-            Process(" -b " + this.SavedumpTextBox.Text + " " + this.SearchxexTextBox.Text);
+            dumpLogBox.Text = "";
+            Process(" -b " + SavedumpTextBox.Text + " " + SearchxexTextBox.Text);
 
         }
 
         private void Dumpall_Click(object sender, EventArgs e)
         {
-            this.dumpLogBox.Text = "";
-            Process(" -d " + this.XFolder.Text + " " + this.SearchxexTextBox.Text);
+            dumpLogBox.Text = "";
+            Process(" -d " + XFolder.Text + " " + SearchxexTextBox.Text);
         }
 
         private void openxexButton1_Click(object sender, EventArgs e)
         {
-            int num = (int)this.OpenFileDialog1.ShowDialog();
-            this.SearchxexTextBox.Text = this.OpenFileDialog1.FileName;
+            OpenFileDialog1.ShowDialog();
+            SearchxexTextBox.Text = OpenFileDialog1.FileName;
         }
 
         private void saveidcButton2_Click(object sender, EventArgs e)
         {
-            int num = (int)this.SaveFileDialog1.ShowDialog();
-            this.SavedumpTextBox.Text = this.SaveFileDialog1.FileName;
+            SaveFileDialog1.ShowDialog();
+            SavedumpTextBox.Text = SaveFileDialog1.FileName;
         }
 
         private void dumpfolder_Click(object sender, EventArgs e)
@@ -79,28 +79,28 @@ namespace XexToolGUI
 
         private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.dumpLogBox.Text = "";
-            this.SearchxexTextBox.Text = "";
-            this.SavedumpTextBox.Text = "";
-            this.XFolder.Text = "";
+            dumpLogBox.Text = "";
+            SearchxexTextBox.Text = "";
+            SavedumpTextBox.Text = "";
+            XFolder.Text = "";
         }
         private void UpdateTextBoxText(string text)
         {
             Debug.WriteLine(text);
-            if (this.CheckBox1.Checked)
+            if (CheckBox1.Checked)
             {
-                this.dumpLogBox.AppendText(Environment.NewLine);
-                this.dumpLogBox.AppendText(text + Environment.NewLine);
+                dumpLogBox.AppendText(Environment.NewLine);
+                dumpLogBox.AppendText(text + Environment.NewLine);
             }
             else
-                this.dumpLogBox.Text = text;
+                dumpLogBox.Text = text;
         }
 
         private void ProcessOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.Data))
                 return;
-            this.Invoke((Delegate)new Dump.UpdateTextBoxTextDelegate(this.UpdateTextBoxText), (object)e.Data);
+            Invoke((Delegate)new Dump.UpdateTextBoxTextDelegate(UpdateTextBoxText), (object)e.Data);
         }
         public delegate void UpdateTextBoxTextDelegate(string text);
 

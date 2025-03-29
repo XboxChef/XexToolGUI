@@ -152,7 +152,7 @@ So do the following to get a fully decrypted and decompressed xex:
 xextool -e u -c b -o default-hack.xex default.xex
 
 Now open default-hack.xex in a hex editor and find where the basefile starts.
-You can search for the "MZ" present in the exe header to find this.
+You can search for the "MZ" present in the exe header to find 
 (Often its around the 0x2000 byte offset mark.)
 Now copy the contents of default.exe into default-hack.xex over the top of
 the basefile that is inside default.xex. It should exactly fill the rest of
@@ -166,7 +166,7 @@ default-done.xex file you can also specify encryption and compression options
 for the output file if you wish.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="$Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAMDAAAAAAAACoJQAAFgAAACgAAAAwAAAAYAAAAAEAIAAAAAAAACQAAAAAAAAAAAAAAAAAAAAA
         AAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
