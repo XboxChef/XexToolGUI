@@ -2,12 +2,17 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 namespace XexToolGUI
 {
     public partial class xexgui : Form
     {
-
+        string basePath = AppDomain.CurrentDomain.BaseDirectory;
+        string XeXFile { get; set; }
+        string XeXUpdate { get; set; }
+        string PatchedXEX { get; set; }
+        bool TaskFinished { get; set; }
 
         public xexgui()
         {
@@ -46,20 +51,35 @@ namespace XexToolGUI
 
         private void OpenxexButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog1.ShowDialog();
-            XeXFileTextBox.Text = OpenFileDialog1.FileName;
+            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                XeXFileTextBox.Text = OpenFileDialog1.FileName;
+                string fileName = Path.GetFileName(OpenFileDialog1.FileName);
+                XeXFile = Path.Combine(basePath, fileName);
+                File.Copy(OpenFileDialog1.FileName, XeXFile, true);
+            }
         }
 
         private void OpenxexpButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog2.ShowDialog();
-            XeXpFileTextBox.Text = OpenFileDialog2.FileName;
+            if (OpenFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                XeXpFileTextBox.Text = OpenFileDialog2.FileName;
+                string fileName = Path.GetFileName(OpenFileDialog2.FileName);
+                XeXUpdate = Path.Combine(basePath, fileName);
+                File.Copy(OpenFileDialog2.FileName, XeXUpdate, true);
+            }
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            SaveFileDialog1.ShowDialog();
-            SavePatchTextBox.Text = SaveFileDialog1.FileName;
+            if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                SavePatchTextBox.Text = SaveFileDialog1.FileName;
+                string fileName = Path.GetFileName(SaveFileDialog1.FileName);
+                PatchedXEX = Path.Combine(basePath, fileName);
+            }
+
         }
 
 
@@ -82,7 +102,7 @@ namespace XexToolGUI
         {
             if (string.IsNullOrEmpty(e.Data))
                 return;
-            Invoke(new UpdateTextBoxTextDelegate(UpdateTextBoxText), (object)e.Data);
+            Invoke(new UpdateTextBoxTextDelegate(UpdateTextBoxText), e.Data);
         }
         private void UpdateTextBoxText(string text)
         {
@@ -91,6 +111,7 @@ namespace XexToolGUI
             {
                 XLogBox.AppendText(Environment.NewLine);
                 XLogBox.AppendText(text + Environment.NewLine);
+                TaskFinished = true;
             }
             else
                 XLogBox.Text = text;
@@ -163,15 +184,74 @@ namespace XexToolGUI
             File.Copy(text, Destination);
             MessageBox.Show("Backup from *" + XeXFileTextBox.Text + "* Successfully !", "Successfully !",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
+        private bool IsFileReady(string filePath)
+        {
+            try
+            {
+                using (FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    return stream.Length > 0;
+                }
+            }
+            catch (IOException)
+            {
+                return false; // File is locked or doesn't exist
+            }
+            catch (Exception)
+            {
+                return false; // Other error
+            }
+        }
+        private bool WaitForCompleteFile(string filePath, int timeoutSeconds = 30)
+        {
+            DateTime startTime = DateTime.Now;
+            TimeSpan timeout = TimeSpan.FromSeconds(timeoutSeconds);
 
+            while (DateTime.Now - startTime < timeout)
+            {
+                if (File.Exists(filePath))
+                {
+                    if (IsFileReady(filePath))
+                    {
+                        return true; // File is ready and has bytes
+                    }
+                }
+
+                Thread.Sleep(250); // Wait 250ms before checking again
+            }
+
+            return false; // Timeout reached
+        }
         private void PatchxexToolStripButton_Click(object sender, EventArgs e)
         {
             XLogBox.Text = "";
             ProgressBar1.Value = ProgressBar1.Minimum;
             Timer1.Start();
-            Process(" -u -p " + XeXpFileTextBox.Text + " -o " + SavePatchTextBox.Text + " " + XeXFileTextBox.Text);
-        }
+            Process(" -u -p " + XeXUpdate + " -o " + PatchedXEX + " " + XeXFile);
 
+            // Wait for the patched file to be created and completed
+            if (WaitForCompleteFile(PatchedXEX, 60)) // Wait up to 60 seconds
+            {
+                try
+                {
+                    File.Delete(XeXUpdate);
+                    File.Delete(XeXFile);
+                    string UserFilename = Path.GetFileName(SavePatchTextBox.Text);
+                    string SavePath = Path.GetDirectoryName(SavePatchTextBox.Text);
+                    File.Move(PatchedXEX, SavePatchTextBox.Text);
+
+                    MessageBox.Show("Patching completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error during file operations: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Timeout waiting for patched file to complete.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         private void Clear2ToolStripButton_Click(object sender, EventArgs e)
         {
             XeXFileTextBox.Text = "";
