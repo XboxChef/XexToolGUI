@@ -9,6 +9,9 @@
   <PropertyGroup>
     <ApplicationIcon>%24this.Icon.ico</ApplicationIcon>
   </PropertyGroup>
+<PropertyGroup>
+  <EnableWindowsTargeting>true</EnableWindowsTargeting>
+</PropertyGroup>
   <ItemGroup>
     <None Update="help\howto\xexpatch-Dateien\themedata.thmx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
