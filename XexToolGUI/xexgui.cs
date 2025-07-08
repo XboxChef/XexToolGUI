@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -13,6 +15,7 @@ namespace XexToolGUI
         string XeXUpdate { get; set; }
         string PatchedXEX { get; set; }
         bool TaskFinished { get; set; }
+        Color DragBackColor { get; set; }
 
         public xexgui()
         {
@@ -53,21 +56,51 @@ namespace XexToolGUI
         {
             if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                XeXFileTextBox.Text = OpenFileDialog1.FileName;
-                string fileName = Path.GetFileName(OpenFileDialog1.FileName);
-                XeXFile = Path.Combine(basePath, fileName);
-                File.Copy(OpenFileDialog1.FileName, XeXFile, true);
+                TextBox textBox = XeXFileTextBox;
+                string filePath = OpenFileDialog1.FileName;
+                string Extension = Path.GetExtension(filePath);
+                if (IsValidExtension())
+                {
+                    SetFileType(filePath);
+                    RestoreDragBackColor(textBox);
+                }
+                else
+                {
+                    RestoreDragBackColor(textBox);
+                }
             }
         }
 
+        private void SetXeXFilePath(string path)
+        {
+            XeXFileTextBox.Text = path;
+            string fileName = Path.GetFileName(path);
+            XeXFile = Path.Combine(basePath, fileName);
+            File.Copy(path, XeXFile, true);
+        }
+        private void SetXeXpFilePath(string FileName)
+        {
+            XeXpFileTextBox.Text = FileName;
+            string fileName = Path.GetFileName(FileName);
+            XeXUpdate = Path.Combine(basePath, fileName);
+            File.Copy(FileName, XeXUpdate, true);
+        }
         private void OpenxexpButton_Click(object sender, EventArgs e)
         {
             if (OpenFileDialog2.ShowDialog() == DialogResult.OK)
             {
-                XeXpFileTextBox.Text = OpenFileDialog2.FileName;
-                string fileName = Path.GetFileName(OpenFileDialog2.FileName);
-                XeXUpdate = Path.Combine(basePath, fileName);
-                File.Copy(OpenFileDialog2.FileName, XeXUpdate, true);
+                TextBox textBox = XeXpFileTextBox;
+                string filePath = OpenFileDialog2.FileName;
+                string Extension = Path.GetExtension(filePath);
+                if (IsValidExtension(".xexp", Extension))
+                {
+                    SetFileType(".xexp", filePath);
+                    RestoreDragBackColor(textBox);
+                }
+                else
+                {
+                    RestoreDragBackColor(textBox);
+                }
             }
         }
 
@@ -96,7 +129,7 @@ namespace XexToolGUI
         {
             DeleteLog();
             Close();
-            
+
         }
         private void ProcessOutputDataReceived(object sender, DataReceivedEventArgs e)
         {
@@ -175,14 +208,14 @@ namespace XexToolGUI
             string Destination = XeXFileTextBox.Text + ".BAK";
             if (!File.Exists(XeXFileTextBox.Text))
             {
-                MessageBox.Show("No xex File selected !","Does not exist",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("No xex File selected !", "Does not exist", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 OpenFileDialog1.ShowDialog();
                 Application.Restart();
             }
             ProgressBar1.Value = ProgressBar1.Minimum;
             Timer1.Stop();
             File.Copy(text, Destination);
-            MessageBox.Show("Backup from *" + XeXFileTextBox.Text + "* Successfully !", "Successfully !",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Backup from *" + XeXFileTextBox.Text + "* Successfully !", "Successfully !", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private bool IsFileReady(string filePath)
         {
@@ -295,9 +328,9 @@ namespace XexToolGUI
 
         private void Process(string arg)
         {
-                Program.process = new Process();
-                Program.process.OutputDataReceived += new DataReceivedEventHandler(ProcessOutputDataReceived);
-                Program.CurrentProcess(arg);
+            Program.process = new Process();
+            Program.process.OutputDataReceived += new DataReceivedEventHandler(ProcessOutputDataReceived);
+            Program.CurrentProcess(arg);
         }
 
         private void KeyvaultToolStripMenuItem_Click(object sender, EventArgs e)
@@ -374,7 +407,7 @@ namespace XexToolGUI
             XLogBox.Text = "";
             ProgressBar1.Value = ProgressBar1.Minimum;
             Timer1.Start();
-            XLogBox.Text = "Create Extended Info file with XeXTool GUI\r\n----------------------------------------------------------\r\n"; 
+            XLogBox.Text = "Create Extended Info file with XeXTool GUI\r\n----------------------------------------------------------\r\n";
             Process(" -l " + XeXFileTextBox.Text);
             DeleteLog();
 
@@ -464,13 +497,13 @@ namespace XexToolGUI
 
         private void HelpToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            if(Directory.Exists(Directory.GetCurrentDirectory() + @"\help\howto\"))
+            if (Directory.Exists(Directory.GetCurrentDirectory() + @"\help\howto\"))
             {
                 System.Diagnostics.Process.Start(Directory.GetCurrentDirectory() + @"\help\howto\xexpatch.htm");
             }
             else
             {
-                MessageBox.Show("Missing Assets: "+ @"\help\howto\xexpatch.htm");
+                MessageBox.Show("Missing Assets: " + @"\help\howto\xexpatch.htm");
             }
         }
 
@@ -493,10 +526,109 @@ namespace XexToolGUI
             Hide();
             Program.About.ShowDialog(this);  //Show Form assigning this form as the forms owner
         }
+        private Dictionary<TextBox, Color> originalColors = new Dictionary<TextBox, Color>();
 
-        private void SavexexToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void XeXFileTextBox_DragDrop(object sender, DragEventArgs e)
         {
+            ValidateAndSetFile(sender, e);
+        }
+        private void XeXpFileTextBox_DragDrop(object sender, DragEventArgs e)
+        {
+            ValidateAndSetFile(sender, e , ".xexp");
 
         }
+        void SetFileType(string ValidExtention = ".xex", string filePath = "")
+        {
+            switch(ValidExtention)
+            {
+                case ".xex":
+                    XeXFileTextBox.Text = filePath;
+                    SetXeXFilePath(filePath);
+
+                    break;
+                case ".xexp":
+                    XeXpFileTextBox.Text = filePath;
+                    SetXeXpFilePath(filePath);
+                    break;
+                default:
+                    return;
+            }
+        }
+        private void ValidateAndSetFile(object sender, DragEventArgs e , string ValidExtention = ".xex")
+        {
+            TextBox textBox = (TextBox)sender;
+            string filePath = HandleFileDragDrop(e);
+            string Extension = Path.GetExtension(filePath);
+            if (IsValidExtension(ValidExtention, Extension))
+            {
+                SetFileType(ValidExtention, filePath);
+                RestoreDragBackColor(textBox);
+            }
+            else
+            {
+                RestoreDragBackColor(textBox);
+            }
+        }
+
+        private bool IsValidExtension(string Valid = ".xex", string extension = ".xex")
+        {
+            switch (Valid)
+            {
+                case ".xex":
+                    if (extension != Valid)
+                    {
+                        MessageBox.Show("Invalid file type. Please drop a " + Valid + " file.", "Invalid File Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                    return true;
+                case ".xexp":
+                    if (extension != Valid)
+                    {
+                        MessageBox.Show("Invalid file type. Please drop a " + Valid + " file.", "Invalid File Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                    return true;
+                default:
+                    MessageBox.Show("Invalid file type. Please drop a " + Valid + " file.", "Invalid File Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+            }
+        }
+        private void XeXFileTextBox_DragEnter(object sender, DragEventArgs e)
+        {
+            HandleDragEnter(sender, e);
+        }
+
+        private void XeXpFileTextBox_DragEnter(object sender, DragEventArgs e)
+        {
+            HandleDragEnter(sender, e);
+        }
+        private void RestoreDragBackColor(object sender)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.BackColor = DragBackColor; // Restore original color
+        }
+
+        private void HandleDragEnter(object sender, DragEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            DragBackColor = textBox.BackColor;// Store original color.
+
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+                textBox.BackColor = System.Drawing.Color.LightBlue;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+                textBox.BackColor = DragBackColor; // Restore original color
+            }
+        }
+        private string HandleFileDragDrop(DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            return files[0];
+        }
+
     }
 }
