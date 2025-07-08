@@ -6,7 +6,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        dotnet-version: [ '8.0.x', '9.0.x' ]
+        dotnet-version: ['9.0.x' ]
         configuration: [ 'Debug', 'Release' ]
     
     steps:
