@@ -89,7 +89,7 @@ namespace XexToolGUI
         {
             if (Program.Info == null)
             {
-                Program.Info = new info();
+                Program.Info = new About();
             }
             Hide();
             Program.Info.ShowDialog(this);  //Show Form assigning this form as the forms owner

@@ -12,10 +12,19 @@
   </PropertyGroup>
 <PropertyGroup>
   <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  <PackageIcon>Tool.png</PackageIcon>
+  <PackageReadmeFile>README.md</PackageReadmeFile>
+</PropertyGroup>
+<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <Optimize>True</Optimize>
 </PropertyGroup>
   <ItemGroup>
     <None Update="help\howto\xexpatch-Dateien\themedata.thmx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Tool.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
     <None Update="XeX Log\xex_InfoLog.cfg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -35,6 +44,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />

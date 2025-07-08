@@ -10,6 +10,7 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -28,166 +29,208 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
-            tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            logoPictureBox = new System.Windows.Forms.PictureBox();
-            labelProductName = new System.Windows.Forms.Label();
-            labelVersion = new System.Windows.Forms.Label();
-            labelCopyright = new System.Windows.Forms.Label();
-            labelCompanyName = new System.Windows.Forms.Label();
-            textBoxDescription = new System.Windows.Forms.TextBox();
-            okButton = new System.Windows.Forms.Button();
-            tableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)logoPictureBox).BeginInit();
+            GroupBox1 = new System.Windows.Forms.GroupBox();
+            Label1 = new System.Windows.Forms.Label();
+            XClose = new System.Windows.Forms.Button();
+            TextBox1 = new System.Windows.Forms.TextBox();
+            TabControl1 = new System.Windows.Forms.TabControl();
+            TabPage1 = new System.Windows.Forms.TabPage();
+            TabPage2 = new System.Windows.Forms.TabPage();
+            TextBox2 = new System.Windows.Forms.TextBox();
+            TabPage3 = new System.Windows.Forms.TabPage();
+            TextBox3 = new System.Windows.Forms.TextBox();
+            TabPage5 = new System.Windows.Forms.TabPage();
+            TextBox5 = new System.Windows.Forms.TextBox();
+            GroupBox1.SuspendLayout();
+            TabControl1.SuspendLayout();
+            TabPage1.SuspendLayout();
+            TabPage2.SuspendLayout();
+            TabPage3.SuspendLayout();
+            TabPage5.SuspendLayout();
             SuspendLayout();
             // 
-            // tableLayoutPanel
+            // GroupBox1
             // 
-            tableLayoutPanel.ColumnCount = 2;
-            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
-            tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
-            tableLayoutPanel.Controls.Add(logoPictureBox, 0, 0);
-            tableLayoutPanel.Controls.Add(labelProductName, 1, 0);
-            tableLayoutPanel.Controls.Add(labelVersion, 1, 1);
-            tableLayoutPanel.Controls.Add(labelCopyright, 1, 2);
-            tableLayoutPanel.Controls.Add(labelCompanyName, 1, 3);
-            tableLayoutPanel.Controls.Add(textBoxDescription, 1, 4);
-            tableLayoutPanel.Controls.Add(okButton, 1, 5);
-            tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel.Location = new System.Drawing.Point(10, 10);
-            tableLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            tableLayoutPanel.Name = "tableLayoutPanel";
-            tableLayoutPanel.RowCount = 6;
-            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            tableLayoutPanel.Size = new System.Drawing.Size(487, 307);
-            tableLayoutPanel.TabIndex = 0;
+            GroupBox1.Controls.Add(Label1);
+            GroupBox1.Location = new System.Drawing.Point(14, 16);
+            GroupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GroupBox1.Name = "GroupBox1";
+            GroupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            GroupBox1.Size = new System.Drawing.Size(712, 155);
+            GroupBox1.TabIndex = 9;
+            GroupBox1.TabStop = false;
             // 
-            // logoPictureBox
+            // Label1
             // 
-            logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            logoPictureBox.Image = (System.Drawing.Image)resources.GetObject("logoPictureBox.Image");
-            logoPictureBox.Location = new System.Drawing.Point(4, 3);
-            logoPictureBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            logoPictureBox.Name = "logoPictureBox";
-            tableLayoutPanel.SetRowSpan(logoPictureBox, 6);
-            logoPictureBox.Size = new System.Drawing.Size(152, 301);
-            logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            logoPictureBox.TabIndex = 12;
-            logoPictureBox.TabStop = false;
+            Label1.AutoSize = true;
+            Label1.Location = new System.Drawing.Point(10, 18);
+            Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            Label1.Name = "Label1";
+            Label1.Size = new System.Drawing.Size(410, 105);
+            Label1.TabIndex = 5;
+            Label1.Text = resources.GetString("Label1.Text");
             // 
-            // labelProductName
+            // XClose
             // 
-            labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
-            labelProductName.Location = new System.Drawing.Point(167, 0);
-            labelProductName.Margin = new System.Windows.Forms.Padding(7, 0, 4, 0);
-            labelProductName.MaximumSize = new System.Drawing.Size(0, 20);
-            labelProductName.Name = "labelProductName";
-            labelProductName.Size = new System.Drawing.Size(316, 20);
-            labelProductName.TabIndex = 19;
-            labelProductName.Text = "Product Name";
-            labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            XClose.Location = new System.Drawing.Point(623, 595);
+            XClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            XClose.Name = "XClose";
+            XClose.Size = new System.Drawing.Size(103, 40);
+            XClose.TabIndex = 7;
+            XClose.Text = "Close";
+            XClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            XClose.UseVisualStyleBackColor = true;
+            XClose.Click += XClose_Click;
             // 
-            // labelVersion
+            // TextBox1
             // 
-            labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            labelVersion.Location = new System.Drawing.Point(167, 30);
-            labelVersion.Margin = new System.Windows.Forms.Padding(7, 0, 4, 0);
-            labelVersion.MaximumSize = new System.Drawing.Size(0, 20);
-            labelVersion.Name = "labelVersion";
-            labelVersion.Size = new System.Drawing.Size(316, 20);
-            labelVersion.TabIndex = 0;
-            labelVersion.Text = "Version";
-            labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            TextBox1.Location = new System.Drawing.Point(4, 8);
+            TextBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TextBox1.Multiline = true;
+            TextBox1.Name = "TextBox1";
+            TextBox1.ReadOnly = true;
+            TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            TextBox1.Size = new System.Drawing.Size(696, 365);
+            TextBox1.TabIndex = 3;
+            TextBox1.Text = resources.GetString("TextBox1.Text");
             // 
-            // labelCopyright
+            // TabControl1
             // 
-            labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            labelCopyright.Location = new System.Drawing.Point(167, 60);
-            labelCopyright.Margin = new System.Windows.Forms.Padding(7, 0, 4, 0);
-            labelCopyright.MaximumSize = new System.Drawing.Size(0, 20);
-            labelCopyright.Name = "labelCopyright";
-            labelCopyright.Size = new System.Drawing.Size(316, 20);
-            labelCopyright.TabIndex = 21;
-            labelCopyright.Text = "Copyright";
-            labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            TabControl1.Controls.Add(TabPage1);
+            TabControl1.Controls.Add(TabPage2);
+            TabControl1.Controls.Add(TabPage3);
+            TabControl1.Controls.Add(TabPage5);
+            TabControl1.Location = new System.Drawing.Point(14, 178);
+            TabControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TabControl1.Name = "TabControl1";
+            TabControl1.SelectedIndex = 0;
+            TabControl1.Size = new System.Drawing.Size(713, 411);
+            TabControl1.TabIndex = 8;
             // 
-            // labelCompanyName
+            // TabPage1
             // 
-            labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
-            labelCompanyName.Location = new System.Drawing.Point(167, 90);
-            labelCompanyName.Margin = new System.Windows.Forms.Padding(7, 0, 4, 0);
-            labelCompanyName.MaximumSize = new System.Drawing.Size(0, 20);
-            labelCompanyName.Name = "labelCompanyName";
-            labelCompanyName.Size = new System.Drawing.Size(316, 20);
-            labelCompanyName.TabIndex = 22;
-            labelCompanyName.Text = "Company Name";
-            labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            TabPage1.Controls.Add(TextBox1);
+            TabPage1.Location = new System.Drawing.Point(4, 24);
+            TabPage1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TabPage1.Name = "TabPage1";
+            TabPage1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TabPage1.Size = new System.Drawing.Size(705, 383);
+            TabPage1.TabIndex = 0;
+            TabPage1.Text = "xex options";
+            TabPage1.UseVisualStyleBackColor = true;
             // 
-            // textBoxDescription
+            // TabPage2
             // 
-            textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            textBoxDescription.Location = new System.Drawing.Point(167, 123);
-            textBoxDescription.Margin = new System.Windows.Forms.Padding(7, 3, 4, 3);
-            textBoxDescription.Multiline = true;
-            textBoxDescription.Name = "textBoxDescription";
-            textBoxDescription.ReadOnly = true;
-            textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            textBoxDescription.Size = new System.Drawing.Size(316, 147);
-            textBoxDescription.TabIndex = 23;
-            textBoxDescription.TabStop = false;
-            textBoxDescription.Text = "Description";
+            TabPage2.Controls.Add(TextBox2);
+            TabPage2.Location = new System.Drawing.Point(4, 24);
+            TabPage2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TabPage2.Name = "TabPage2";
+            TabPage2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TabPage2.Size = new System.Drawing.Size(705, 383);
+            TabPage2.TabIndex = 1;
+            TabPage2.Text = "Examples";
+            TabPage2.UseVisualStyleBackColor = true;
             // 
-            // okButton
+            // TextBox2
             // 
-            okButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            okButton.Location = new System.Drawing.Point(395, 277);
-            okButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            okButton.Name = "okButton";
-            okButton.Size = new System.Drawing.Size(88, 27);
-            okButton.TabIndex = 24;
-            okButton.Text = "&OK";
-            okButton.Click += okButton_Click;
+            TextBox2.Location = new System.Drawing.Point(4, 8);
+            TextBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TextBox2.Multiline = true;
+            TextBox2.Name = "TextBox2";
+            TextBox2.ReadOnly = true;
+            TextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            TextBox2.Size = new System.Drawing.Size(696, 365);
+            TextBox2.TabIndex = 4;
+            TextBox2.Text = resources.GetString("TextBox2.Text");
+            // 
+            // TabPage3
+            // 
+            TabPage3.Controls.Add(TextBox3);
+            TabPage3.Location = new System.Drawing.Point(4, 24);
+            TabPage3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TabPage3.Name = "TabPage3";
+            TabPage3.Size = new System.Drawing.Size(705, 383);
+            TabPage3.TabIndex = 2;
+            TabPage3.Text = "Changelog xextool";
+            TabPage3.UseVisualStyleBackColor = true;
+            // 
+            // TextBox3
+            // 
+            TextBox3.Location = new System.Drawing.Point(4, 8);
+            TextBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TextBox3.Multiline = true;
+            TextBox3.Name = "TextBox3";
+            TextBox3.ReadOnly = true;
+            TextBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            TextBox3.Size = new System.Drawing.Size(696, 365);
+            TextBox3.TabIndex = 4;
+            TextBox3.Text = resources.GetString("TextBox3.Text");
+            // 
+            // TabPage5
+            // 
+            TabPage5.BackColor = System.Drawing.SystemColors.Control;
+            TabPage5.Controls.Add(TextBox5);
+            TabPage5.Location = new System.Drawing.Point(4, 24);
+            TabPage5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TabPage5.Name = "TabPage5";
+            TabPage5.Size = new System.Drawing.Size(705, 383);
+            TabPage5.TabIndex = 4;
+            TabPage5.Text = "Information";
+            // 
+            // TextBox5
+            // 
+            TextBox5.Location = new System.Drawing.Point(4, 8);
+            TextBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TextBox5.Multiline = true;
+            TextBox5.Name = "TextBox5";
+            TextBox5.ReadOnly = true;
+            TextBox5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            TextBox5.Size = new System.Drawing.Size(696, 365);
+            TextBox5.TabIndex = 6;
+            TextBox5.Text = resources.GetString("TextBox5.Text");
             // 
             // About
             // 
-            AcceptButton = okButton;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(507, 327);
-            Controls.Add(tableLayoutPanel);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            ClientSize = new System.Drawing.Size(741, 642);
+            Controls.Add(GroupBox1);
+            Controls.Add(XClose);
+            Controls.Add(TabControl1);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "About";
-            Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
-            ShowIcon = false;
-            ShowInTaskbar = false;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            Text = "About";
-            FormClosing += About_FormClosing;
-            tableLayoutPanel.ResumeLayout(false);
-            tableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)logoPictureBox).EndInit();
+            Text = "About GUI";
+            FormClosing += info_FormClosing;
+            GroupBox1.ResumeLayout(false);
+            GroupBox1.PerformLayout();
+            TabControl1.ResumeLayout(false);
+            TabPage1.ResumeLayout(false);
+            TabPage1.PerformLayout();
+            TabPage2.ResumeLayout(false);
+            TabPage2.PerformLayout();
+            TabPage3.ResumeLayout(false);
+            TabPage3.PerformLayout();
+            TabPage5.ResumeLayout(false);
+            TabPage5.PerformLayout();
             ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
-        private System.Windows.Forms.PictureBox logoPictureBox;
-        private System.Windows.Forms.Label labelProductName;
-        private System.Windows.Forms.Label labelVersion;
-        private System.Windows.Forms.Label labelCopyright;
-        private System.Windows.Forms.Label labelCompanyName;
-        private System.Windows.Forms.TextBox textBoxDescription;
-        private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.GroupBox GroupBox1;
+        private System.Windows.Forms.Label Label1;
+        private System.Windows.Forms.Button XClose;
+        private System.Windows.Forms.TextBox TextBox1;
+        private System.Windows.Forms.TabControl TabControl1;
+        private System.Windows.Forms.TabPage TabPage1;
+        private System.Windows.Forms.TabPage TabPage2;
+        private System.Windows.Forms.TextBox TextBox2;
+        private System.Windows.Forms.TabPage TabPage3;
+        private System.Windows.Forms.TextBox TextBox3;
+        private System.Windows.Forms.TabPage TabPage5;
+        private System.Windows.Forms.TextBox TextBox5;
     }
 }

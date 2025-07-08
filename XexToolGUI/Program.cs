@@ -9,12 +9,11 @@ namespace XexToolGUI
 {
     internal static class Program
     {
-        public static info Info { get; set; }
+        public static About Info { get; set; }
         public static IDCScript IDCScript { get; set; }
         public static TitleUpdate TitleUpdate { get; set; }
         public static Dump Dump { get; set; }
         public static xml xml { get; set; }
-        public static About About { get; set; }
         public static xexgui xexgui { get; set; }
         public static HelpReverse HelpReverse { get; set; }
         public static Process process { get; set; }

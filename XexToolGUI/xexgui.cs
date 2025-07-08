@@ -400,7 +400,7 @@ namespace XexToolGUI
             }
         }
 
-        private async void OpenxexButton_Click(object sender, EventArgs e)
+        private async void OpenXEX(object sender, EventArgs e)
         {
             if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -408,7 +408,7 @@ namespace XexToolGUI
                 string filePath = OpenFileDialog1.FileName;
                 string Extension = Path.GetExtension(filePath);
 
-                if (IsValidExtension())
+                if (IsValidExtension(".xex", Extension))
                 {
 
                     UpdateProgressBar(0, "Loading XEX file...");
@@ -432,7 +432,7 @@ namespace XexToolGUI
             }
         }
 
-        private async void OpenxexpButton_Click(object sender, EventArgs e)
+        private async void OpenXEXP(object sender, EventArgs e)
         {
             if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -851,33 +851,16 @@ namespace XexToolGUI
         }
         private void AboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (Program.About == null)
-            {
-                Program.About = new About();
-                Hide();
-                Program.About.ShowDialog();
-            }
+
         }
 
-        private void Clear2ToolStripButton_Click(object sender, EventArgs e)
+        private void ClearTool(object sender, EventArgs e)
         {
             XeXFileTextBox.Text = string.Empty;
             XeXpFileTextBox.Text = string.Empty;
             SavePatchTextBox.Text = string.Empty;
             XLogBox.Text = string.Empty;
             UpdateProgressBar(0);
-            LogMessage("Interface cleared");
-        }
-
-        private void ClearToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            XeXFileTextBox.Text = string.Empty;
-            XeXpFileTextBox.Text = string.Empty;
-            SavePatchTextBox.Text = string.Empty;
-            XLogBox.Text = string.Empty;
-            UpdateProgressBar(0);
-
-            LogMessage("Interface cleared");
         }
 
         private void CMDToolStripMenuItem_Click(object sender, EventArgs e) =>
@@ -922,7 +905,7 @@ namespace XexToolGUI
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 e.Effect = DragDropEffects.Copy;
-                textBox.BackColor = System.Drawing.Color.LightBlue;
+                textBox.BackColor = Color.LightBlue;
             }
             else
             {
@@ -1081,7 +1064,7 @@ namespace XexToolGUI
             }
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void SaveAS(object sender, EventArgs e)
         {
             if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -1094,20 +1077,12 @@ namespace XexToolGUI
 
         private void SelectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                XeXpFileTextBox.Text = OpenFileDialog1.FileName;
-                LogMessage($"XEXP file selected: {Path.GetFileName(OpenFileDialog1.FileName)}");
-            }
+            OpenXEXP(sender, e);
         }
 
         private void SelectxexToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                XeXFileTextBox.Text = OpenFileDialog1.FileName;
-                LogMessage($"XEX file selected: {Path.GetFileName(OpenFileDialog1.FileName)}");
-            }
+            OpenXEX(sender, e);
         }
 
         private void XeXFileTextBox_DragDrop(object sender, DragEventArgs e)
@@ -1152,9 +1127,18 @@ namespace XexToolGUI
 
         private void HelpToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            if (Directory.Exists(Directory.GetCurrentDirectory() + @"\help\howto\"))
+            if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), @"help\howto")))
             {
-                System.Diagnostics.Process.Start(Directory.GetCurrentDirectory() + @"\help\howto\xexpatch.htm");
+                string filePath = Path.Combine(Directory.GetCurrentDirectory(), @"help\howto\xexpatch.htm");
+
+                try
+                {
+                    Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error opening file: " + ex.Message);
+                }
             }
             else
             {
@@ -1179,7 +1163,7 @@ namespace XexToolGUI
         {
             if (Program.Info == null)
             {
-                Program.Info = new info();
+                Program.Info = new About();
                 Hide();
                 Program.Info.ShowDialog();
             }
@@ -1189,7 +1173,7 @@ namespace XexToolGUI
         {
             if (Program.Info == null)
             {
-                Program.Info = new info();
+                Program.Info = new About();
                 Hide();
                 Program.Info.ShowDialog();
             }
@@ -1238,28 +1222,6 @@ namespace XexToolGUI
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private bool ValidateRequiredFiles()
-        {
-            if (string.IsNullOrEmpty(XeXFileTextBox.Text) || !File.Exists(XeXFileTextBox.Text))
-            {
-                ShowErrorMessage("Please select a valid XEX file before proceeding.", "Missing XEX File");
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool CanProceedWithOperation()
-        {
-            if (_cancellationTokenSource != null && _cancellationTokenSource.Token.IsCancellationRequested)
-            {
-                LogMessage("Operation cancelled by user");
-                return false;
-            }
-
-            return ValidateRequiredFiles();
-        }
-
         private void XeXFileTextBox_DragLeave(object sender, EventArgs e)
         {
             XeXFileTextBox.BackColor = DragBackColor;
@@ -1269,5 +1231,29 @@ namespace XexToolGUI
         {
             XeXpFileTextBox.BackColor = DragBackColor;
         }
+
+        private void HandleMouseDown(object sender, MouseEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            RestoreDragBackColor(textBox);
+        }
+
+        private void HandleMouseEnter(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.BackColor = Color.LightBlue;
+        }
+
+        private void HandleMouseLeave(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            RestoreDragBackColor(textBox);
+        }
+
+        private void SavexexToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveAS(sender, e);
+        }
+
     }
 }

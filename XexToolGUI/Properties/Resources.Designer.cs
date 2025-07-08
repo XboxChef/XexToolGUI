@@ -71,12 +71,12 @@ namespace XexToolGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static System.Drawing.Bitmap AboutTool {
+        internal static byte[] About_sound {
             get {
-                object obj = ResourceManager.GetObject("AboutTool", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("About_sound", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -183,9 +183,19 @@ namespace XexToolGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap EncryptionOptions {
+        internal static System.Drawing.Bitmap GearWithTool {
             get {
-                object obj = ResourceManager.GetObject("EncryptionOptions", resourceCulture);
+                object obj = ResourceManager.GetObject("GearWithTool", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GearWithTool1 {
+            get {
+                object obj = ResourceManager.GetObject("GearWithTool1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +283,9 @@ namespace XexToolGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap openedbox {
+        internal static System.Drawing.Bitmap OpenedBox {
             get {
-                object obj = ResourceManager.GetObject("openedbox", resourceCulture);
+                object obj = ResourceManager.GetObject("OpenedBox", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -286,6 +296,16 @@ namespace XexToolGUI.Properties {
         internal static System.Drawing.Bitmap Openxex {
             get {
                 object obj = ResourceManager.GetObject("Openxex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OrangeLock {
+            get {
+                object obj = ResourceManager.GetObject("OrangeLock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -396,16 +416,6 @@ namespace XexToolGUI.Properties {
         internal static System.Drawing.Bitmap Tool {
             get {
                 object obj = ResourceManager.GetObject("Tool", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ToolStripDropDownButton9 {
-            get {
-                object obj = ResourceManager.GetObject("ToolStripDropDownButton9", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
