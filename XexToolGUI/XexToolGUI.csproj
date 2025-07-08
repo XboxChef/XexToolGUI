@@ -8,7 +8,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>%24this.Icon.ico</ApplicationIcon>
+    <ApplicationIcon>%24Icon.ico</ApplicationIcon>
   </PropertyGroup>
 <PropertyGroup>
   <EnableWindowsTargeting>true</EnableWindowsTargeting>
@@ -22,7 +22,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="%24this.Icon.ico" />
+    <Content Include="%24Icon.ico" />
     <Content Include="help\howto\xexpatch-Dateien\colorschememapping.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

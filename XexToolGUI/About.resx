@@ -721,7 +721,7 @@
         r4L8Xx36v2j7H+jT0P4H+mtvf/3r/w//PKI8lh66sgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="$Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEAIACoEAAAJgAAACAgAAABAAgAqAgAAM4QAAAoAAAAIAAAAEAAAAABACAAAAAAAAAg
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABQAAAAgAAAALAAAADgAAABIAAAAVAAAAGQAA

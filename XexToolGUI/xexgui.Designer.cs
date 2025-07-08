@@ -40,7 +40,6 @@ namespace XexToolGUI
             CheckBox1 = new CheckBox();
             GroupBox1 = new GroupBox();
             Label1 = new Label();
-            Timer1 = new Timer(components);
             XeXFileTextBox = new TextBox();
             ToolTip1 = new ToolTip(components);
             OpenFileDialog1 = new OpenFileDialog();
@@ -120,7 +119,6 @@ namespace XexToolGUI
             Label7 = new Label();
             OpenxexButton = new Button();
             Label6 = new Label();
-            Timer2 = new Timer(components);
             GroupBox1.SuspendLayout();
             ToolStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -199,6 +197,7 @@ namespace XexToolGUI
             XeXFileTextBox.TabIndex = 20;
             XeXFileTextBox.DragDrop += XeXFileTextBox_DragDrop;
             XeXFileTextBox.DragEnter += XeXFileTextBox_DragEnter;
+            XeXFileTextBox.DragLeave += XeXFileTextBox_DragLeave;
             // 
             // OpenFileDialog1
             // 
@@ -224,6 +223,7 @@ namespace XexToolGUI
             XeXpFileTextBox.TabIndex = 21;
             XeXpFileTextBox.DragDrop += XeXpFileTextBox_DragDrop;
             XeXpFileTextBox.DragEnter += XeXpFileTextBox_DragEnter;
+            XeXpFileTextBox.DragLeave += XeXpFileTextBox_DragLeave;
             // 
             // ImageList1
             // 
@@ -886,7 +886,7 @@ namespace XexToolGUI
             Controls.Add(GroupBox1);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Icon = (Icon)resources.GetObject("$this.Icon");
+            Icon = (Icon)resources.GetObject("$Icon");
             Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
             Name = "xexgui";
@@ -910,7 +910,6 @@ namespace XexToolGUI
         #endregion
         private TextBox XLogBox;
         private ProgressBar ProgressBar1;
-        private Timer Timer2;
         private ToolStripMenuItem HxDToolStripMenuItem1;
         private ToolStripMenuItem WxPirsToolStripMenuItem;
         private ToolStripDropDownButton ToolStripDropDownButton5;
@@ -976,7 +975,6 @@ namespace XexToolGUI
         private CheckBox CheckBox1;
         private GroupBox GroupBox1;
         private Label Label1;
-        private Timer Timer1;
         private TextBox XeXFileTextBox;
         private ToolTip ToolTip1;
         private OpenFileDialog OpenFileDialog1;

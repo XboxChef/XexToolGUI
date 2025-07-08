@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -497,78 +497,118 @@ v4.0
 no log was kept of earlier history - but there were lots of addition and fixes :)</value>
   </data>
   <data name="TextBox4.Text" xml:space="preserve">
-    <value>:: History
+    <value>XexTool GUI Changelog
+History
+
+= added
 
 
-+ = added
--  = remove
-*  = fixed
+= removed
 
 
+= fixed
+
+v1.8 Beta
+
+added enhanced process management with real-time output capture
+added improved error handling and process monitoring
+added automatic file cleanup after patching operations
+added timeout protection for file operations (60 second default)
+added real-time progress feedback with marquee animation
+added improved UI responsiveness during operations
+
+
+fixed file locking issues during patch operations
+fixed progress bar synchronization with actual process status
+fixed memory leaks in process handling
+improved error reporting with detailed exception messages
+
+v1.7 Beta
+
+added enhanced drag-and-drop validation with visual feedback
+added automatic xextool.exe deployment from embedded resources
+added comprehensive file readiness checking
+added support for multiple external tools (HxD, wxPirs integration)
+added enhanced backup functionality with custom save locations
+added automatic log file management and cleanup
+added improved file validation and extension checking
+added support for XML processing functionality
+added IDC script generation for IDA Pro integration
+
+
+enhanced drag-and-drop color feedback system
+improved file copy operations with overwrite protection
+fixed external tool launching issues
 
 v1.6 Beta
------------------------------------------------------------
-+ added xex compression 
-+ added xex uncrypt and encrypt function
-+ added idc create funktion for IDA
-+ added xex dump function
-*  fix TitleUpdate search bug 
-+ added TitleUpdate search function 
-    JQE360 and XBUC webside
-*  fix a bug in the about window
-+ added better xex patch function
-  ( The xex file no longer needs to be in the same folder )
-+ added better backup function
-+ added xex information
--  remove source code
-+ added cmd control for xextool.exe
-+ added create xex machine format
-    devkit and retail
-+ added complete new ui
-+ added more remove options
-+ bounding pathname
-+ keyvault privileges restriction
-+ required revocation check
-+ Zero media ID
-+ Ap2.5 (Beta)
+
+added xex compression
+added xex uncrypt and encrypt function
+added idc create funktion for IDA
+added xex dump function
 
 
+fix TitleUpdate search bug
+
+
+added TitleUpdate search function
+JQE360 and XBUC webside
+
+
+fix a bug in the about window
+
+
+added better xex patch function
+( The xex file no longer needs to be in the same folder )
+added better backup function
+added xex information
+
+
+remove source code
+
+
+added cmd control for xextool.exe
+added create xex machine format
+devkit and retail
+added complete new ui
+added more remove options
+bounding pathname
+keyvault privileges restriction
+required revocation check
+Zero media ID
+Ap2.5 (Beta)
 
 v1.5
------------------------------------------------------------
-+ added better backup Function
-+ added Remove and Rename Funktion
-+ added xextool check
-*  fix little UI Bug
-*  fix Remove Rename Check Bug
-*  fix Backup check Bug
-+ update UI
 
+added better backup Function
+added Remove and Rename Funktion
+added xextool check
+
+
+fix little UI Bug
+fix Remove Rename Check Bug
+fix Backup check Bug
+
+
+update UI
 
 v1.1
------------------------------------------------------------
-+ update UI 
-+ added default_mp.xex Backup
-+ added default_mp.xex Patch 
 
+update UI
+added default_mp.xex Backup
+added default_mp.xex Patch
 
 v1.0
------------------------------------------------------------
-
 = Basic UI
-= Create Backup from default.xex 
+= Create Backup from default.xex
 = Remove Region Limits
-  NTSC/U, NTSC/J (Excluded China), PAL and make a Region Free default.xex
-= Remove Media Limits 
+NTSC/U, NTSC/J (Excluded China), PAL and make a Region Free default.xex
+= Remove Media Limits
 = Remove Dash Limits
 = Removes the Dash Version check good for old Dash versions.
 = xex Patch with xexp
-  Patch the latest version for your game
-
-
+Patch the latest version for your game
 v0.9
------------------------------------------------------------
-
 Closed Release</value>
   </data>
   <data name="TextBox5.Text" xml:space="preserve">
@@ -602,7 +642,7 @@ Maël Hörz
  </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="$Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAICAAAAEAIACoEAAAJgAAACAgAAABAAgAqAgAAM4QAAAoAAAAIAAAAEAAAAABACAAAAAAAAAg
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABQAAAAgAAAALAAAADgAAABIAAAAVAAAAGQAA
