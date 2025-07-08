@@ -7,6 +7,7 @@ jobs:
     strategy:
       matrix:
         dotnet-version: [ '8.0.x', '9.0.x' ]
+        configuration: [ 'Debug', 'Release' ]
     
     steps:
       - uses: actions/checkout@v4
@@ -23,16 +24,16 @@ jobs:
         run: dotnet restore
       
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build --no-restore --configuration ${{ matrix.configuration }}
       
       - name: Test
-        run: dotnet test --no-build --configuration Release --verbosity normal
+        run: dotnet test --no-build --configuration ${{ matrix.configuration }} --verbosity normal
       
-      - name: Pack
-        run: dotnet pack --no-build --configuration Release --output ./artifacts
+      - name: Publish
+        run: dotnet publish --no-build --configuration ${{ matrix.configuration }} --output ./build-output/${{ matrix.configuration }}
       
-      - name: Upload artifacts
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: nuget-packages-dotnet-${{ matrix.dotnet-version }}
-          path: ./artifacts/*.nupkg
+          name: build-${{ matrix.configuration }}-dotnet-${{ matrix.dotnet-version }}
+          path: ./build-output/${{ matrix.configuration }}/**
