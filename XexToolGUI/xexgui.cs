@@ -434,10 +434,10 @@ namespace XexToolGUI
 
         private async void OpenxexpButton_Click(object sender, EventArgs e)
         {
-            if (OpenFileDialog2.ShowDialog() == DialogResult.OK)
+            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 TextBox textBox = XeXpFileTextBox;
-                string filePath = OpenFileDialog2.FileName;
+                string filePath = OpenFileDialog1.FileName;
                 string Extension = Path.GetExtension(filePath);
 
                 if (IsValidExtension(".xexp", Extension))

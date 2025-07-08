@@ -104,7 +104,7 @@
             // 
             // saveidcButton2
             // 
-            saveidcButton2.Image = global::XexToolGUI.Properties.Resources.SaveButton_Image;
+            saveidcButton2.Image = global::XexToolGUI.Properties.Resources.Save;
             saveidcButton2.Location = new System.Drawing.Point(332, 249);
             saveidcButton2.Name = "saveidcButton2";
             saveidcButton2.Size = new System.Drawing.Size(88, 34);
@@ -165,7 +165,7 @@
             // 
             // openxexButton1
             // 
-            openxexButton1.Image = global::XexToolGUI.Properties.Resources.OpenxexButton_Image;
+            openxexButton1.Image = global::XexToolGUI.Properties.Resources.Openxex;
             openxexButton1.Location = new System.Drawing.Point(332, 209);
             openxexButton1.Name = "openxexButton1";
             openxexButton1.Size = new System.Drawing.Size(88, 34);

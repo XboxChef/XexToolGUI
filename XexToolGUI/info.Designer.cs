@@ -75,7 +75,6 @@
             // 
             // XClose
             // 
-            XClose.Image = Properties.Resources.ExitToolStripMenuItem2_Image;
             XClose.Location = new System.Drawing.Point(623, 595);
             XClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             XClose.Name = "XClose";

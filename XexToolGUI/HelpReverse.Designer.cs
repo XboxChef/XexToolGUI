@@ -36,7 +36,7 @@
             // 
             // PictureBox1
             // 
-            PictureBox1.Image = global::XexToolGUI.Properties.Resources.DumbToolStripMenuItem_Image;
+            PictureBox1.Image = XexToolGUI.Properties.Resources.Dumb;
             PictureBox1.Location = new System.Drawing.Point(12, 12);
             PictureBox1.Name = "PictureBox1";
             PictureBox1.Size = new System.Drawing.Size(24, 24);
