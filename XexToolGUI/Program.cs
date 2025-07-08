@@ -18,23 +18,20 @@ namespace XexToolGUI
         public static xexgui xexgui { get; set; }
         public static HelpReverse HelpReverse { get; set; }
         public static Process process { get; set; }
-        public static void CurrentProcess(string Args)
+        public static void ExecuteProcess(string Args)
         {
             process.StartInfo.FileName = "xextool.exe";
             process.StartInfo.Arguments = Args;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.RedirectStandardError = true;  // Important for error messages
             process.StartInfo.CreateNoWindow = true;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            process.EnableRaisingEvents = true;
+
             process.Start();
             process.BeginOutputReadLine();
-            process.Close();
-
-        }
-
-        private static void ProcessOutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            throw new NotImplementedException();
+            process.BeginErrorReadLine();  // Capture error output too
         }
 
         /// <summary>

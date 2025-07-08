@@ -188,10 +188,6 @@ namespace XexToolGUI
             Label1.TabIndex = 3;
             Label1.Text = "The program runs in the background when it is finished \r\nor an error in the log window appears.      (ca. 1.min)\r\n";
             // 
-            // Timer1
-            // 
-            Timer1.Tick += Timer1_Tick;
-            // 
             // XeXFileTextBox
             // 
             XeXFileTextBox.AllowDrop = true;
@@ -874,10 +870,6 @@ namespace XexToolGUI
             Label6.Size = new Size(28, 13);
             Label6.TabIndex = 21;
             Label6.Text = "Xex";
-            // 
-            // Timer2
-            // 
-            Timer2.Tick += Timer2_Tick;
             // 
             // xexgui
             // 

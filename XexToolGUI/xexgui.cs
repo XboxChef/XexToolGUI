@@ -1,21 +1,21 @@
-﻿using Microsoft.VisualBasic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+
 namespace XexToolGUI
 {
     public partial class xexgui : Form
     {
-        string basePath = AppDomain.CurrentDomain.BaseDirectory;
+        Color DragBackColor { get; set; }
+        string PatchedXEX { get; set; }
         string XeXFile { get; set; }
         string XeXUpdate { get; set; }
-        string PatchedXEX { get; set; }
-        bool TaskFinished { get; set; }
-        Color DragBackColor { get; set; }
+
+        string basePath = AppDomain.CurrentDomain.BaseDirectory;
 
         public xexgui()
         {
@@ -23,183 +23,23 @@ namespace XexToolGUI
             DoesXexToolExists();
         }
 
-        private static void DoesXexToolExists()
-        {
-            if (!File.Exists("xextool.exe"))
-            {
-                File.WriteAllBytes(Directory.GetCurrentDirectory() + @"\xextool.exe", Properties.Resources.xextool);
-                MessageBox.Show("GUI is Ready for Work !", "XexTool.exe Installed !", MessageBoxButtons.OK);
-
-            }
-        }
-
-
-        private void SelectxexToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog1.ShowDialog();
-            XeXFileTextBox.Text = OpenFileDialog1.FileName;
-        }
-
-        private void SelectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog2.ShowDialog();
-            XeXpFileTextBox.Text = OpenFileDialog2.FileName;
-        }
-
-        private void SavexexToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog1.ShowDialog();
-            SavePatchTextBox.Text = SaveFileDialog1.FileName;
-        }
-
-        private void OpenxexButton_Click(object sender, EventArgs e)
-        {
-            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                TextBox textBox = XeXFileTextBox;
-                string filePath = OpenFileDialog1.FileName;
-                string Extension = Path.GetExtension(filePath);
-                if (IsValidExtension())
-                {
-                    SetFileType(filePath);
-                    RestoreDragBackColor(textBox);
-                }
-                else
-                {
-                    RestoreDragBackColor(textBox);
-                }
-            }
-        }
-
-        private void SetXeXFilePath(string path)
-        {
-            XeXFileTextBox.Text = path;
-            string fileName = Path.GetFileName(path);
-            XeXFile = Path.Combine(basePath, fileName);
-            File.Copy(path, XeXFile, true);
-        }
-        private void SetXeXpFilePath(string FileName)
-        {
-            XeXpFileTextBox.Text = FileName;
-            string fileName = Path.GetFileName(FileName);
-            XeXUpdate = Path.Combine(basePath, fileName);
-            File.Copy(FileName, XeXUpdate, true);
-        }
-        private void OpenxexpButton_Click(object sender, EventArgs e)
-        {
-            if (OpenFileDialog2.ShowDialog() == DialogResult.OK)
-            {
-                TextBox textBox = XeXpFileTextBox;
-                string filePath = OpenFileDialog2.FileName;
-                string Extension = Path.GetExtension(filePath);
-                if (IsValidExtension(".xexp", Extension))
-                {
-                    SetFileType(".xexp", filePath);
-                    RestoreDragBackColor(textBox);
-                }
-                else
-                {
-                    RestoreDragBackColor(textBox);
-                }
-            }
-        }
-
-        private void SaveButton_Click(object sender, EventArgs e)
-        {
-            if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                SavePatchTextBox.Text = SaveFileDialog1.FileName;
-                string fileName = Path.GetFileName(SaveFileDialog1.FileName);
-                PatchedXEX = Path.Combine(basePath, fileName);
-            }
-
-        }
-
-
-        private void ClearToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            XeXFileTextBox.Text = "";
-            XeXpFileTextBox.Text = "";
-            SavePatchTextBox.Text = "";
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-        }
-
-        private void ExitToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            DeleteLog();
-            Close();
-
-        }
-        private void ProcessOutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(e.Data))
-                return;
-            Invoke(new UpdateTextBoxTextDelegate(UpdateTextBoxText), e.Data);
-        }
-        private void UpdateTextBoxText(string text)
-        {
-            Debug.WriteLine(text);
-            if (CheckBox1.Checked)
-            {
-                XLogBox.AppendText(Environment.NewLine);
-                XLogBox.AppendText(text + Environment.NewLine);
-                TaskFinished = true;
-            }
-            else
-                XLogBox.Text = text;
-        }
-        private void BinaryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -c b  -o " + SavePatchTextBox.Text + "_binary.xex " + XeXFileTextBox.Text);
-        }
-
-        private void CompressedToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -c c  -o " + SavePatchTextBox.Text + "_compressed.xex " + XeXFileTextBox.Text);
-        }
-
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            ProgressBar1.Increment(20);
-            if (ProgressBar1.Value != ProgressBar1.Maximum)
-                return;
-            Timer1.Stop();
-        }
-
-        private void UncompressedToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -c u  -o " + SavePatchTextBox.Text + "_uncompressed.xex " + XeXFileTextBox.Text);
-        }
-
-        private void EncryptedToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -e e  -o " + SavePatchTextBox.Text + "_encrypted.xex " + XeXFileTextBox.Text);
-        }
-
-        private void UncryptedToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -e u  -o " + SavePatchTextBox.Text + "_uncrypted.xex " + XeXFileTextBox.Text);
-        }
         public delegate void UpdateTextBoxTextDelegate(string text);
-        private void Timer2_Tick(object sender, EventArgs e)
-        {
 
+        private void AboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (Program.About == null)
+            {
+                Program.About = new About();  //Add event Handler to cleanup after form closes
+            }
+            Hide();
+            Program.About.ShowDialog();  //Show Form assigning this form as the forms owner
+        }
+        private void AP25ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -r  a " + XeXFileTextBox.Text);
         }
 
         private void BackupxexToolStripButton_Click(object sender, EventArgs e)
@@ -217,200 +57,47 @@ namespace XexToolGUI
             File.Copy(text, Destination);
             MessageBox.Show("Backup from *" + XeXFileTextBox.Text + "* Successfully !", "Successfully !", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        private bool IsFileReady(string filePath)
+        private void BinaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.None))
-                {
-                    return stream.Length > 0;
-                }
-            }
-            catch (IOException)
-            {
-                return false; // File is locked or doesn't exist
-            }
-            catch (Exception)
-            {
-                return false; // Other error
-            }
-        }
-        private bool WaitForCompleteFile(string filePath, int timeoutSeconds = 30)
-        {
-            DateTime startTime = DateTime.Now;
-            TimeSpan timeout = TimeSpan.FromSeconds(timeoutSeconds);
-
-            while (DateTime.Now - startTime < timeout)
-            {
-                if (File.Exists(filePath))
-                {
-                    if (IsFileReady(filePath))
-                    {
-                        return true; // File is ready and has bytes
-                    }
-                }
-
-                Thread.Sleep(250); // Wait 250ms before checking again
-            }
-
-            return false; // Timeout reached
-        }
-        private void PatchxexToolStripButton_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
+            XLogBox.Text = string.Empty;
             ProgressBar1.Value = ProgressBar1.Minimum;
             Timer1.Start();
-            Process(" -u -p " + XeXUpdate + " -o " + PatchedXEX + " " + XeXFile);
-
-            // Wait for the patched file to be created and completed
-            if (WaitForCompleteFile(PatchedXEX, 60)) // Wait up to 60 seconds
-            {
-                try
-                {
-                    File.Delete(XeXUpdate);
-                    File.Delete(XeXFile);
-                    string UserFilename = Path.GetFileName(SavePatchTextBox.Text);
-                    string SavePath = Path.GetDirectoryName(SavePatchTextBox.Text);
-                    File.Move(PatchedXEX, SavePatchTextBox.Text);
-
-                    MessageBox.Show("Patching completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error during file operations: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Timeout waiting for patched file to complete.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            ExecuteCommand(" -c b  -o " + SavePatchTextBox.Text + "_binary.xex " + XeXFileTextBox.Text);
         }
         private void Clear2ToolStripButton_Click(object sender, EventArgs e)
         {
-            XeXFileTextBox.Text = "";
-            XeXpFileTextBox.Text = "";
-            SavePatchTextBox.Text = "";
-            XLogBox.Text = "";
+            XeXFileTextBox.Text = string.Empty;
+            XeXpFileTextBox.Text = string.Empty;
+            SavePatchTextBox.Text = string.Empty;
+            XLogBox.Text = string.Empty;
             ProgressBar1.Value = ProgressBar1.Minimum;
         }
 
-        private void RegionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -r  r " + XeXFileTextBox.Text);
-        }
 
-        private void MediaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ClearToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            XLogBox.Text = "";
+            XeXFileTextBox.Text = string.Empty;
+            XeXpFileTextBox.Text = string.Empty;
+            SavePatchTextBox.Text = string.Empty;
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+        }
+        private void CMDToolStripMenuItem_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("C:\\Windows\\System32\\cmd.exe");
+
+        private void CompressedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
             ProgressBar1.Value = ProgressBar1.Minimum;
             Timer1.Start();
-            Process(" -r  m " + XeXFileTextBox.Text);
+            ExecuteCommand(" -c c  -o " + SavePatchTextBox.Text + "_compressed.xex " + XeXFileTextBox.Text);
         }
 
         private void DashToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            XLogBox.Text = "";
+            XLogBox.Text = string.Empty;
             ProgressBar1.Value = ProgressBar1.Minimum;
             Timer1.Start();
-            Process(" -r  l " + XeXFileTextBox.Text);
-        }
-
-        private void PathnameToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -r  b " + XeXFileTextBox.Text);
-        }
-
-        private void Process(string arg)
-        {
-            Program.process = new Process();
-            Program.process.OutputDataReceived += new DataReceivedEventHandler(ProcessOutputDataReceived);
-            Program.CurrentProcess(arg);
-        }
-
-        private void KeyvaultToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -r  k " + XeXFileTextBox.Text);
-        }
-
-        private void RequiredToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -r  c " + XeXFileTextBox.Text);
-        }
-
-        private void ZeroIDToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -r  z " + XeXFileTextBox.Text);
-        }
-        private void AP25ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -r  a " + XeXFileTextBox.Text);
-        }
-
-        private void RetailToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -m  r " + XeXFileTextBox.Text);
-        }
-
-        private void DevkitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            Process(" -m  d " + XeXFileTextBox.Text);
-        }
-
-        private void InfoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (Program.Info == null)
-            {
-                Program.Info = new info();
-            }
-            Hide();
-            Program.Info.ShowDialog(this);  //Show Form assigning this form as the forms owner
-        }
-
-        private void XexBasicToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Directory.CreateDirectory("XeX Log");
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            XLogBox.Text = "Create Basic Info file with XeXTool GUI\r\n----------------------------------------------------\r\n";
-            Process(XeXFileTextBox.Text);
-            DeleteLog();
-        }
-
-        private void XexExtendedToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Directory.CreateDirectory("XeX Log");
-            XLogBox.Text = "";
-            ProgressBar1.Value = ProgressBar1.Minimum;
-            Timer1.Start();
-            XLogBox.Text = "Create Extended Info file with XeXTool GUI\r\n----------------------------------------------------------\r\n";
-            Process(" -l " + XeXFileTextBox.Text);
-            DeleteLog();
-
+            ExecuteCommand(" -r  l " + XeXFileTextBox.Text);
         }
 
         private void DeleteLog()
@@ -428,18 +115,69 @@ namespace XexToolGUI
             }
         }
 
-        private void ReadInfoToolStripButton_Click(object sender, EventArgs e)
+        private void DevkitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!File.Exists("XeX Log\\xex_InfoLog.cfg"))
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -m  d " + XeXFileTextBox.Text);
+        }
+
+        private static void DoesXexToolExists()
+        {
+            if (!File.Exists("xextool.exe"))
             {
-                if (!Directory.Exists(Directory.GetCurrentDirectory() + @"\XeX Log\"))
-                {
-                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\XeX Log\");
-                }
-                File.WriteAllText("XeX Log\\xex_InfoLog.cfg", XLogBox.Text);
+                File.WriteAllBytes(Directory.GetCurrentDirectory() + @"\xextool.exe", Properties.Resources.xextool);
+                MessageBox.Show("GUI is Ready for Work !", "XexTool.exe Installed !", MessageBoxButtons.OK);
 
             }
-            Interaction.Shell("C:\\Windows\\Notepad.exe XeX Log\\xex_InfoLog.cfg", AppWinStyle.NormalFocus);
+        }
+
+        private void DumbToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.Dump == null)
+            {
+                Program.Dump = new Dump();
+                Hide();
+                Program.Dump.ShowDialog();  //Show Form assigning this form as the forms owner
+            }
+        }
+
+        private void EncryptedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -e e  -o " + SavePatchTextBox.Text + "_encrypted.xex " + XeXFileTextBox.Text);
+        }
+
+        private void ExitToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            DeleteLog();
+            Close();
+
+        }
+
+        private void HandleDragEnter(object sender, DragEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            DragBackColor = textBox.BackColor;// Store original color.
+
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+                textBox.BackColor = System.Drawing.Color.LightBlue;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+                textBox.BackColor = DragBackColor; // Restore original color
+            }
+        }
+        private string HandleFileDragDrop(DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            return files[0];
         }
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -448,51 +186,7 @@ namespace XexToolGUI
                 Program.HelpReverse = new HelpReverse();
             }
             Hide();
-            Program.HelpReverse.ShowDialog(this);  //Show Form assigning this form as the forms owner
-        }
-        private void CMDToolStripMenuItem_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("C:\\Windows\\System32\\cmd.exe");
-
-        private void HxDToolStripMenuItem1_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("Apps\\HxD.exe");
-
-        private void WxPirsToolStripMenuItem_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("Apps\\wxPirs.exe");
-
-        private void TitleUpdatesToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (Program.TitleUpdate == null)
-            {
-                Program.TitleUpdate = new TitleUpdate();
-            }
-            Hide();
-            Program.TitleUpdate.ShowDialog(this);  //Show Form assigning this form as the forms owner
-        }
-
-        private void IdcFileForIDAToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Program.IDCScript == null)
-            {
-                Program.IDCScript = new IDCScript();
-            }
-            Hide();
-            Program.IDCScript.ShowDialog(this);  //Show Form assigning this form as the forms owner
-        }
-
-        private void DumbToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Program.Dump == null)
-            {
-                Program.Dump = new Dump();
-            }
-            Hide();
-            Program.Dump.ShowDialog(this);  //Show Form assigning this form as the forms owner
-        }
-        private void XMLToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Program.xml == null)
-            {
-                Program.xml = new xml();
-            }
-            Hide();
-            Program.xml.ShowDialog(this);  //Show Form assigning this form as the forms owner
+            Program.HelpReverse.ShowDialog();  //Show Form assigning this form as the forms owner
         }
 
         private void HelpToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -507,6 +201,28 @@ namespace XexToolGUI
             }
         }
 
+        private void HxDToolStripMenuItem1_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("Apps\\HxD.exe");
+
+        private void IdcFileForIDAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.IDCScript == null)
+            {
+                Program.IDCScript = new IDCScript();
+            }
+            Hide();
+            Program.IDCScript.ShowDialog();  //Show Form assigning this form as the forms owner
+        }
+
+        private void InfoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (Program.Info == null)
+            {
+                Program.Info = new info();
+            }
+            Hide();
+            Program.Info.ShowDialog();  //Show Form assigning this form as the forms owner
+        }
+
         private void InfoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             if (Program.Info == null)
@@ -514,59 +230,37 @@ namespace XexToolGUI
                 Program.Info = new info();
             }
             Hide();
-            Program.Info.ShowDialog(this);  //Show Form assigning this form as the forms owner
+            Program.Info.ShowDialog();  //Show Form assigning this form as the forms owner
         }
-
-        private void AboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        private bool IsFileReady(string filePath)
         {
-            if (Program.About == null)
+            try
             {
-                Program.About = new About();  //Add event Handler to cleanup after form closes
+                using (FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    bool isReady = stream.Length > 0; // or just 'true' if empty files are OK
+
+                    if (isReady)
+                    {
+                        ProgressBar1.Value = ProgressBar1.Maximum; // File is ready - show 100%
+                    }
+                    else
+                    {
+                        ProgressBar1.Value = ProgressBar1.Maximum / 2; // File exists but empty - show 50%
+                    }
+
+                    return isReady;
+                }
             }
-            Hide();
-            Program.About.ShowDialog(this);  //Show Form assigning this form as the forms owner
-        }
-        private Dictionary<TextBox, Color> originalColors = new Dictionary<TextBox, Color>();
-
-        private void XeXFileTextBox_DragDrop(object sender, DragEventArgs e)
-        {
-            ValidateAndSetFile(sender, e);
-        }
-        private void XeXpFileTextBox_DragDrop(object sender, DragEventArgs e)
-        {
-            ValidateAndSetFile(sender, e , ".xexp");
-
-        }
-        void SetFileType(string ValidExtention = ".xex", string filePath = "")
-        {
-            switch(ValidExtention)
+            catch (IOException)
             {
-                case ".xex":
-                    XeXFileTextBox.Text = filePath;
-                    SetXeXFilePath(filePath);
-
-                    break;
-                case ".xexp":
-                    XeXpFileTextBox.Text = filePath;
-                    SetXeXpFilePath(filePath);
-                    break;
-                default:
-                    return;
+                ProgressBar1.Value = 0; // File is locked/busy - show 0%
+                return false;
             }
-        }
-        private void ValidateAndSetFile(object sender, DragEventArgs e , string ValidExtention = ".xex")
-        {
-            TextBox textBox = (TextBox)sender;
-            string filePath = HandleFileDragDrop(e);
-            string Extension = Path.GetExtension(filePath);
-            if (IsValidExtension(ValidExtention, Extension))
+            catch (Exception)
             {
-                SetFileType(ValidExtention, filePath);
-                RestoreDragBackColor(textBox);
-            }
-            else
-            {
-                RestoreDragBackColor(textBox);
+                ProgressBar1.Value = 0; // File doesn't exist or other error - show 0%
+                return false;
             }
         }
 
@@ -593,14 +287,188 @@ namespace XexToolGUI
                     return false;
             }
         }
-        private void XeXFileTextBox_DragEnter(object sender, DragEventArgs e)
+
+        private void KeyvaultToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HandleDragEnter(sender, e);
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -r  k " + XeXFileTextBox.Text);
         }
 
-        private void XeXpFileTextBox_DragEnter(object sender, DragEventArgs e)
+        private void MediaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            HandleDragEnter(sender, e);
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -r  m " + XeXFileTextBox.Text);
+        }
+
+        private void OpenxexButton_Click(object sender, EventArgs e)
+        {
+            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                TextBox textBox = XeXFileTextBox;
+                string filePath = OpenFileDialog1.FileName;
+                string Extension = Path.GetExtension(filePath);
+                if (IsValidExtension())
+                {
+                    SetFileType(OpenFileDialog1.FileName);
+                    RestoreDragBackColor(textBox);
+                }
+                else
+                {
+                    RestoreDragBackColor(textBox);
+                }
+            }
+        }
+        private void OpenxexpButton_Click(object sender, EventArgs e)
+        {
+            if (OpenFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                TextBox textBox = XeXpFileTextBox;
+                string filePath = OpenFileDialog2.FileName;
+                string Extension = Path.GetExtension(filePath);
+                if (IsValidExtension(".xexp", Extension))
+                {
+                    SetFileType(filePath, ".xexp");
+                    RestoreDragBackColor(textBox);
+                }
+                else
+                {
+                    RestoreDragBackColor(textBox);
+                }
+            }
+        }
+        private void PatchxexToolStripButton_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -u -p " + XeXUpdate + " -o " + PatchedXEX + " " + XeXFile);
+
+            // Wait for the patched file to be created and completed
+            if (WaitForCompleteFile(PatchedXEX, 60)) // Wait up to 60 seconds
+            {
+                try
+                {
+                    File.Delete(XeXUpdate);
+                    File.Delete(XeXFile);
+                    string UserFilename = Path.GetFileName(SavePatchTextBox.Text);
+                    string SavePath = Path.GetDirectoryName(SavePatchTextBox.Text);
+                    File.Move(PatchedXEX, SavePatchTextBox.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error during file operations: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Timeout waiting for patched file to complete.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void PathnameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Style = ProgressBarStyle.Marquee;
+            ProgressBar1.MarqueeAnimationSpeed = 30;
+            ExecuteCommand(" -r  b " + XeXFileTextBox.Text);
+        }
+
+        private void ExecuteCommand(string arg)
+        {
+            Program.process = new Process();
+            Program.process.OutputDataReceived += ProcessOutputDataReceived;
+            Program.process.ErrorDataReceived += ProcessErrorDataReceived;
+            Program.process.Exited += Process_Exited;
+            Program.ExecuteProcess(arg);
+        }
+
+        private void ProcessOutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.Data))
+                return;
+
+            // Add output to XLogBox
+            this.Invoke((() =>
+            {
+                XLogBox.AppendText(e.Data + Environment.NewLine);
+                XLogBox.SelectionStart = XLogBox.Text.Length;
+                XLogBox.ScrollToCaret(); // Auto-scroll to bottom
+            }));
+        }
+
+        private void ProcessErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.Data))
+                return;
+
+            // Add error output to XLogBox
+            this.Invoke((Action)(() =>
+            {
+                XLogBox.AppendText("ERROR: " + e.Data + Environment.NewLine);
+                XLogBox.SelectionStart = XLogBox.Text.Length;
+                XLogBox.ScrollToCaret();
+            }));
+        }
+
+        private void Process_Exited(object sender, EventArgs e)
+        {
+            this.Invoke((Action)(() =>
+            {
+                ProgressBar1.Style = ProgressBarStyle.Continuous;
+                ProgressBar1.Value = ProgressBar1.Maximum;
+
+                XLogBox.AppendText("Process completed." + Environment.NewLine);
+                XLogBox.SelectionStart = XLogBox.Text.Length;
+                XLogBox.ScrollToCaret();
+
+                if (Program.process != null)
+                {
+                    Program.process.Close();
+                    Program.process = null;
+                }
+            }));
+        }
+
+        private void ReadInfoToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists("XeX Log\\xex_InfoLog.cfg"))
+            {
+                if (!Directory.Exists(Directory.GetCurrentDirectory() + @"\XeX Log\"))
+                {
+                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\XeX Log\");
+                }
+                File.WriteAllText("XeX Log\\xex_InfoLog.cfg", XLogBox.Text);
+
+            }
+            try
+            {
+                Process.Start("C:\\Windows\\Notepad.exe", "\"XeX Log\\xex_InfoLog.cfg\"");
+            }
+            catch (Exception ex)
+            {
+                // Handle error
+                MessageBox.Show($"Error opening file: {ex.Message}");
+            }
+        }
+
+        private void RegionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -r  r " + XeXFileTextBox.Text);
+        }
+
+        private void RequiredToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -r  c " + XeXFileTextBox.Text);
         }
         private void RestoreDragBackColor(object sender)
         {
@@ -608,26 +476,205 @@ namespace XexToolGUI
             textBox.BackColor = DragBackColor; // Restore original color
         }
 
-        private void HandleDragEnter(object sender, DragEventArgs e)
+        private void RetailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -m  r " + XeXFileTextBox.Text);
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                SavePatchTextBox.Text = SaveFileDialog1.FileName;
+                string fileName = Path.GetFileName(SaveFileDialog1.FileName);
+                PatchedXEX = Path.Combine(basePath, fileName);
+            }
+
+        }
+
+        private void SelectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                XeXpFileTextBox.Text = OpenFileDialog1.FileName;
+            }
+        }
+
+
+        private void SelectxexToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                XeXFileTextBox.Text = OpenFileDialog1.FileName;
+            }
+        }
+        void SetFileType(string filePath = "",string ValidExtention = ".xex")
+        {
+            switch (ValidExtention)
+            {
+                case ".xex":
+                    XeXFileTextBox.Text = filePath;
+                    SetXeXFilePath(filePath);
+
+                    break;
+                case ".xexp":
+                    XeXpFileTextBox.Text = filePath;
+                    SetXeXpFilePath(filePath);
+                    break;
+                default:
+                    return;
+            }
+        }
+
+        private void SetXeXFilePath(string path)
+        {
+            XeXFileTextBox.Text = path;
+            string fileName = Path.GetFileName(path);
+            XeXFile = Path.Combine(basePath, fileName);
+            File.Copy(path, XeXFile, true);
+        }
+        private void SetXeXpFilePath(string FileName)
+        {
+            XeXpFileTextBox.Text = FileName;
+            string fileName = Path.GetFileName(FileName);
+            XeXUpdate = Path.Combine(basePath, fileName);
+            File.Copy(FileName, XeXUpdate, true);
+        }
+        private void TitleUpdatesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (Program.TitleUpdate == null)
+            {
+                Program.TitleUpdate = new TitleUpdate();
+                Hide();
+                Program.TitleUpdate.ShowDialog();
+            }
+        }
+
+        private void UncompressedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -c u  -o " + SavePatchTextBox.Text + "_uncompressed.xex " + XeXFileTextBox.Text);
+        }
+
+        private void UncryptedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -e u  -o " + SavePatchTextBox.Text + "_uncrypted.xex " + XeXFileTextBox.Text);
+        }
+        private void UpdateTextBoxText(string text)
+        {
+            Debug.WriteLine(text);
+            if (CheckBox1.Checked)
+            {
+                XLogBox.AppendText(Environment.NewLine);
+                XLogBox.AppendText(text + Environment.NewLine);
+            }
+            else
+                XLogBox.Text = text;
+        }
+        private void ValidateAndSetFile(object sender, DragEventArgs e, string ValidExtention = ".xex")
         {
             TextBox textBox = (TextBox)sender;
-            DragBackColor = textBox.BackColor;// Store original color.
-
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            string filePath = HandleFileDragDrop(e);
+            string Extension = Path.GetExtension(filePath);
+            if (IsValidExtension(ValidExtention, Extension))
             {
-                e.Effect = DragDropEffects.Copy;
-                textBox.BackColor = System.Drawing.Color.LightBlue;
+                SetFileType(filePath, ValidExtention);
+                RestoreDragBackColor(textBox);
             }
             else
             {
-                e.Effect = DragDropEffects.None;
-                textBox.BackColor = DragBackColor; // Restore original color
+                RestoreDragBackColor(textBox);
             }
         }
-        private string HandleFileDragDrop(DragEventArgs e)
+
+        private bool WaitForCompleteFile(string filePath, int timeoutSeconds = 30)
         {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            return files[0];
+            DateTime startTime = DateTime.Now;
+            TimeSpan timeout = TimeSpan.FromSeconds(timeoutSeconds);
+
+            while (DateTime.Now - startTime < timeout)
+            {
+                if (File.Exists(filePath))
+                {
+                    if (IsFileReady(filePath))
+                    {
+                        return true; // File is ready and has bytes
+                    }
+                }
+
+                Thread.Sleep(250); // Wait 250ms before checking again
+            }
+
+            return false; // Timeout reached
+        }
+
+        private void WxPirsToolStripMenuItem_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("Apps\\wxPirs.exe");
+
+        private void XexBasicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Directory.CreateDirectory("XeX Log");
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            XLogBox.Text = "Create Basic Info file with XeXTool GUI\r\n----------------------------------------------------\r\n";
+            ExecuteCommand(XeXFileTextBox.Text);
+            DeleteLog();
+        }
+
+        private void XexExtendedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Directory.CreateDirectory("XeX Log");
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            XLogBox.Text = "Create Extended Info file with XeXTool GUI\r\n----------------------------------------------------------\r\n";
+            ExecuteCommand(" -l " + XeXFileTextBox.Text);
+            DeleteLog();
+
+        }
+
+        private void XeXFileTextBox_DragDrop(object sender, DragEventArgs e)
+        {
+            ValidateAndSetFile(sender, e);
+        }
+        private void XeXFileTextBox_DragEnter(object sender, DragEventArgs e)
+        {
+            HandleDragEnter(sender, e);
+        }
+        private void XeXpFileTextBox_DragDrop(object sender, DragEventArgs e)
+        {
+            ValidateAndSetFile(sender, e, ".xexp");
+
+        }
+
+        private void XeXpFileTextBox_DragEnter(object sender, DragEventArgs e)
+        {
+            HandleDragEnter(sender, e);
+        }
+        private void XMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.xml == null)
+            {
+                Program.xml = new xml();
+                Hide();
+                Program.xml.ShowDialog();
+            }
+        }
+
+        private void ZeroIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            ProgressBar1.Value = ProgressBar1.Minimum;
+            Timer1.Start();
+            ExecuteCommand(" -r  z " + XeXFileTextBox.Text);
         }
 
     }

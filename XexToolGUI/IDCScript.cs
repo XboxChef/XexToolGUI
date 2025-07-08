@@ -58,7 +58,7 @@ namespace XexToolGUI
         {
                 Program.process = new Process();
                 Program.process.OutputDataReceived += new DataReceivedEventHandler(ProcessOutputDataReceived);
-                Program.CurrentProcess(arg);
+                Program.ExecuteProcess(arg);
         }
         private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
