@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -77,15 +77,65 @@ namespace XexToolGUI
             SaveFileDialog1.ShowDialog();
             SavexmlTextBox.Text = SaveFileDialog1.FileName;
         }
-        private void CreatexmlButton_Click(object sender, EventArgs e)
+        private async void CreatexmlButton_Click(object sender, EventArgs e)
         {
-            Process(" -x " + SavexmlTextBox.Text + " " + SearchxexTextBox.Text + " >game.xml");
+            if (string.IsNullOrEmpty(SearchxexTextBox.Text) || !System.IO.File.Exists(SearchxexTextBox.Text))
+            {
+                MessageBox.Show("Please select a valid XEX file.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string outputPath = string.IsNullOrEmpty(SavexmlTextBox.Text)
+                ? System.IO.Path.Combine(System.IO.Path.GetDirectoryName(SearchxexTextBox.Text) ?? ".", "game.xml")
+                : SavexmlTextBox.Text;
+            await CreateXmlWithOptionsAsync(outputPath, "a");
         }
-        private void Process(string arg)
+
+        private async System.Threading.Tasks.Task CreateXmlWithOptionsAsync(string outputPath, string options)
         {
-                Program.process = new Process();
-                Program.process.OutputDataReceived += new DataReceivedEventHandler(ProcessOutputDataReceived);
-                Program.ExecuteProcess(arg);
+            xmlLogBox.Clear();
+            try
+            {
+                var output = new System.Text.StringBuilder();
+                using (var process = new System.Diagnostics.Process())
+                {
+                    process.StartInfo.FileName = "xextool.exe";
+                    process.StartInfo.Arguments = $" -x {options} \"{SearchxexTextBox.Text}\"";
+                    process.StartInfo.UseShellExecute = false;
+                    process.StartInfo.RedirectStandardOutput = true;
+                    process.StartInfo.RedirectStandardError = true;
+                    process.StartInfo.CreateNoWindow = true;
+
+                    process.OutputDataReceived += (s, e) =>
+                    {
+                        if (!string.IsNullOrEmpty(e.Data))
+                        {
+                            output.AppendLine(e.Data);
+                            Invoke((Delegate)new UpdateTextBoxTextDelegate(UpdateTextBoxText), e.Data);
+                        }
+                    };
+                    process.ErrorDataReceived += (s, e) =>
+                    {
+                        if (!string.IsNullOrEmpty(e.Data))
+                        {
+                            output.AppendLine("ERROR: " + e.Data);
+                            Invoke((Delegate)new UpdateTextBoxTextDelegate(UpdateTextBoxText), "ERROR: " + e.Data);
+                        }
+                    };
+
+                    process.Start();
+                    process.BeginOutputReadLine();
+                    process.BeginErrorReadLine();
+                    await System.Threading.Tasks.Task.Run(() => process.WaitForExit());
+
+                    System.IO.File.WriteAllText(outputPath, output.ToString(), System.Text.Encoding.UTF8);
+                    UpdateTextBoxText($"XML saved to: {outputPath}");
+                }
+            }
+            catch (Exception ex)
+            {
+                UpdateTextBoxText($"Error: {ex.Message}");
+                Logger.Error($"XML export failed: {ex.Message}", ex);
+            }
         }
         public delegate void UpdateTextBoxTextDelegate(string text);
 

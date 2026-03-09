@@ -18,12 +18,18 @@ Thank you for your program and your hard work. I've created this little tool so 
 - **Drag & Drop Support** – Simply drag XEX/XEXP files into the interface
 - **Progress Tracking** – Real-time progress bars and detailed logging
 - **Asynchronous Operations** – Non-blocking UI that remains responsive during operations
-- **Comprehensive XEX Operations:**
-  - Patch XEX files with XEXP updates
-  - Create backups of original files
-  - Convert between binary/compressed/encrypted formats
-  - Extract detailed file information
-  - Region and security modifications
+- **Comprehensive XEX Operations (full XexTool v6.3 support):**
+  - **Patch** – Patch XEX with XEXP (optional embed with `-u`)
+  - **Dump** – Dump basefile (`-b`) or all resources (`-d`)
+  - **IDC** – Export basefile info for IDA (`-i`)
+  - **XML** – Extract metadata (`-x a/b/d/i/m/n/p/r/t/x`)
+  - **Remove limits** – Region, Media, Dash, Pathname, Keyvault, Keyvault Privileges, Device ID, Console ID, Dates, Required, Zero ID, AP2.5 (`-r`)
+  - **Machine format** – Retail/Devkit (`-m`)
+  - **Compression** – Uncompressed/Compressed/Binary (`-c`)
+  - **Encryption** – Uncrypted/Encrypted (`-e`)
+  - **Add bounding path** (`-a`)
+  - **Special patches** – Bitflag patches (`-s`)
+- **Logger** – Timestamped logging with levels, buffer, and Save Log to file
 - **Advanced File Operations** – Copy, move, and delete with progress feedback
 - **Error Handling** – Robust error handling with detailed logging
 
@@ -52,6 +58,11 @@ Thank you for your program and your hard work. I've created this little tool so 
 ---
 
 ## Recent Updates
+
+### Version 2.1 Beta
+- **Full XexTool v6.3 support** – All CLI options available (dump, IDC, XML, remove limits, machine/compression/encryption, add bounding path, special patches)
+- **Logger** – Timestamped logging, Save Log to file
+- **Save As** – When both XEX and XEXP are set, Save As patches and saves in one step
 
 ### Version 2.0 – UI Optimization & Stability
 - **Fixed UI Freezing** – Resolved issues where the interface would become unresponsive after operations

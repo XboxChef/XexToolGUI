@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -63,6 +63,8 @@ namespace XexToolGUI
             IdcFileForIDAToolStripMenuItem = new ToolStripMenuItem();
             XMLToolStripMenuItem = new ToolStripMenuItem();
             DumbToolStripMenuItem = new ToolStripMenuItem();
+            AddBoundingPathToolStripMenuItem = new ToolStripMenuItem();
+            SpecialPatchesToolStripMenuItem = new ToolStripMenuItem();
             ToolStripDropDownButton6 = new ToolStripDropDownButton();
             InfoToolStripMenuItem2 = new ToolStripMenuItem();
             HelpToolStripMenuItem = new ToolStripMenuItem();
@@ -92,6 +94,11 @@ namespace XexToolGUI
             RequiredToolStripMenuItem = new ToolStripMenuItem();
             ZeroIDToolStripMenuItem = new ToolStripMenuItem();
             AP25ToolStripMenuItem = new ToolStripMenuItem();
+            SaveLogToolStripMenuItem = new ToolStripMenuItem();
+            DeviceIDToolStripMenuItem = new ToolStripMenuItem();
+            ConsoleIDToolStripMenuItem = new ToolStripMenuItem();
+            DatesToolStripMenuItem = new ToolStripMenuItem();
+            KeyvaultPrivilegesToolStripMenuItem = new ToolStripMenuItem();
             ToolStripDropDownButton8 = new ToolStripDropDownButton();
             RetailToolStripMenuItem = new ToolStripMenuItem();
             DevkitToolStripMenuItem = new ToolStripMenuItem();
@@ -116,6 +123,7 @@ namespace XexToolGUI
             Label7 = new Label();
             OpenxexButton = new Button();
             Label6 = new Label();
+            EmbedPatchCheckBox = new CheckBox();
             GroupBox1.SuspendLayout();
             ToolStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -255,7 +263,7 @@ namespace XexToolGUI
             // ToolStripDropDownButton2
             // 
             ToolStripDropDownButton2.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            ToolStripDropDownButton2.DropDownItems.AddRange(new ToolStripItem[] { SelectxexToolStripMenuItem1, SelectToolStripMenuItem, SavexexToolStripMenuItem, ClearToolStripMenuItem1, ExitToolStripMenuItem2 });
+            ToolStripDropDownButton2.DropDownItems.AddRange(new ToolStripItem[] { SelectxexToolStripMenuItem1, SelectToolStripMenuItem, SavexexToolStripMenuItem, SaveLogToolStripMenuItem, ClearToolStripMenuItem1, ExitToolStripMenuItem2 });
             ToolStripDropDownButton2.ImageTransparentColor = Color.Magenta;
             ToolStripDropDownButton2.Name = "ToolStripDropDownButton2";
             ToolStripDropDownButton2.Size = new Size(38, 22);
@@ -288,6 +296,15 @@ namespace XexToolGUI
             SavexexToolStripMenuItem.Text = "Save As";
             SavexexToolStripMenuItem.ToolTipText = "Save file";
             SavexexToolStripMenuItem.Click += SavexexToolStripMenuItem_Click;
+            // 
+            // SaveLogToolStripMenuItem
+            // 
+            SaveLogToolStripMenuItem.Image = Properties.Resources.Clear;
+            SaveLogToolStripMenuItem.Name = "SaveLogToolStripMenuItem";
+            SaveLogToolStripMenuItem.Size = new Size(180, 22);
+            SaveLogToolStripMenuItem.Text = "Save Log...";
+            SaveLogToolStripMenuItem.ToolTipText = "Save log output to file";
+            SaveLogToolStripMenuItem.Click += SaveLogToolStripMenuItem_Click;
             // 
             // ClearToolStripMenuItem1
             // 
@@ -348,7 +365,7 @@ namespace XexToolGUI
             // ToolStripDropDownButton5
             // 
             ToolStripDropDownButton5.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            ToolStripDropDownButton5.DropDownItems.AddRange(new ToolStripItem[] { TitleUpdatesToolStripMenuItem1, IdcFileForIDAToolStripMenuItem, XMLToolStripMenuItem, DumbToolStripMenuItem });
+            ToolStripDropDownButton5.DropDownItems.AddRange(new ToolStripItem[] { TitleUpdatesToolStripMenuItem1, IdcFileForIDAToolStripMenuItem, XMLToolStripMenuItem, DumbToolStripMenuItem, AddBoundingPathToolStripMenuItem, SpecialPatchesToolStripMenuItem });
             ToolStripDropDownButton5.ImageTransparentColor = Color.Magenta;
             ToolStripDropDownButton5.Name = "ToolStripDropDownButton5";
             ToolStripDropDownButton5.Size = new Size(46, 22);
@@ -378,7 +395,6 @@ namespace XexToolGUI
             XMLToolStripMenuItem.Name = "XMLToolStripMenuItem";
             XMLToolStripMenuItem.Size = new Size(142, 22);
             XMLToolStripMenuItem.Text = "XML ";
-            XMLToolStripMenuItem.Visible = false;
             XMLToolStripMenuItem.Click += XMLToolStripMenuItem_Click;
             // 
             // DumbToolStripMenuItem
@@ -389,6 +405,22 @@ namespace XexToolGUI
             DumbToolStripMenuItem.Text = "Dump";
             DumbToolStripMenuItem.ToolTipText = "Dump an xex file";
             DumbToolStripMenuItem.Click += DumbToolStripMenuItem_Click;
+            // 
+            // AddBoundingPathToolStripMenuItem
+            // 
+            AddBoundingPathToolStripMenuItem.Name = "AddBoundingPathToolStripMenuItem";
+            AddBoundingPathToolStripMenuItem.Size = new Size(180, 22);
+            AddBoundingPathToolStripMenuItem.Text = "Add Bounding Path";
+            AddBoundingPathToolStripMenuItem.ToolTipText = "Add bounding path to xex location";
+            AddBoundingPathToolStripMenuItem.Click += AddBoundingPathToolStripMenuItem_Click;
+            // 
+            // SpecialPatchesToolStripMenuItem
+            // 
+            SpecialPatchesToolStripMenuItem.Name = "SpecialPatchesToolStripMenuItem";
+            SpecialPatchesToolStripMenuItem.Size = new Size(180, 22);
+            SpecialPatchesToolStripMenuItem.Text = "Special Patches";
+            SpecialPatchesToolStripMenuItem.ToolTipText = "Apply special xex patches (bitflags 0/1/2/4/8/.../-1)";
+            SpecialPatchesToolStripMenuItem.Click += SpecialPatchesToolStripMenuItem_Click;
             // 
             // ToolStripDropDownButton6
             // 
@@ -478,7 +510,7 @@ namespace XexToolGUI
             ToolStripStatusLabel1.Image = Properties.Resources.CMD;
             ToolStripStatusLabel1.Name = "ToolStripStatusLabel1";
             ToolStripStatusLabel1.Size = new Size(54, 17);
-            ToolStripStatusLabel1.Text = "v2.0 Beta";
+            ToolStripStatusLabel1.Text = "v2.1 Beta";
             // 
             // ToolStrip3
             // 
@@ -541,7 +573,7 @@ namespace XexToolGUI
             // ToolStripDropDownButton7
             // 
             ToolStripDropDownButton7.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            ToolStripDropDownButton7.DropDownItems.AddRange(new ToolStripItem[] { RegionToolStripMenuItem, MediaToolStripMenuItem, DashToolStripMenuItem, PathnameToolStripMenuItem, KeyvaultToolStripMenuItem, RequiredToolStripMenuItem, ZeroIDToolStripMenuItem, AP25ToolStripMenuItem });
+            ToolStripDropDownButton7.DropDownItems.AddRange(new ToolStripItem[] { RegionToolStripMenuItem, MediaToolStripMenuItem, DashToolStripMenuItem, PathnameToolStripMenuItem, KeyvaultToolStripMenuItem, KeyvaultPrivilegesToolStripMenuItem, RequiredToolStripMenuItem, DeviceIDToolStripMenuItem, ConsoleIDToolStripMenuItem, DatesToolStripMenuItem, ZeroIDToolStripMenuItem, AP25ToolStripMenuItem });
             ToolStripDropDownButton7.Image = Properties.Resources.X;
             ToolStripDropDownButton7.ImageTransparentColor = Color.Magenta;
             ToolStripDropDownButton7.Name = "ToolStripDropDownButton7";
@@ -619,6 +651,38 @@ namespace XexToolGUI
             AP25ToolStripMenuItem.Text = "AP2.5";
             AP25ToolStripMenuItem.ToolTipText = "Remove Ap2.5 Checks Beta";
             AP25ToolStripMenuItem.Click += AP25ToolStripMenuItem_Click;
+            // 
+            // DeviceIDToolStripMenuItem
+            // 
+            DeviceIDToolStripMenuItem.Name = "DeviceIDToolStripMenuItem";
+            DeviceIDToolStripMenuItem.Size = new Size(180, 22);
+            DeviceIDToolStripMenuItem.Text = "Device ID";
+            DeviceIDToolStripMenuItem.ToolTipText = "Remove bounding device id";
+            DeviceIDToolStripMenuItem.Click += DeviceIDToolStripMenuItem_Click;
+            // 
+            // ConsoleIDToolStripMenuItem
+            // 
+            ConsoleIDToolStripMenuItem.Name = "ConsoleIDToolStripMenuItem";
+            ConsoleIDToolStripMenuItem.Size = new Size(180, 22);
+            ConsoleIDToolStripMenuItem.Text = "Console ID";
+            ConsoleIDToolStripMenuItem.ToolTipText = "Remove console id restriction";
+            ConsoleIDToolStripMenuItem.Click += ConsoleIDToolStripMenuItem_Click;
+            // 
+            // DatesToolStripMenuItem
+            // 
+            DatesToolStripMenuItem.Name = "DatesToolStripMenuItem";
+            DatesToolStripMenuItem.Size = new Size(180, 22);
+            DatesToolStripMenuItem.Text = "Dates";
+            DatesToolStripMenuItem.ToolTipText = "Remove dates restriction";
+            DatesToolStripMenuItem.Click += DatesToolStripMenuItem_Click;
+            // 
+            // KeyvaultPrivilegesToolStripMenuItem
+            // 
+            KeyvaultPrivilegesToolStripMenuItem.Name = "KeyvaultPrivilegesToolStripMenuItem";
+            KeyvaultPrivilegesToolStripMenuItem.Size = new Size(180, 22);
+            KeyvaultPrivilegesToolStripMenuItem.Text = "Keyvault Privileges";
+            KeyvaultPrivilegesToolStripMenuItem.ToolTipText = "Remove keyvault privileges restriction";
+            KeyvaultPrivilegesToolStripMenuItem.Click += KeyvaultPrivilegesToolStripMenuItem_Click;
             // 
             // ToolStripDropDownButton8
             // 
@@ -768,6 +832,7 @@ namespace XexToolGUI
             // 
             // GroupBox6
             // 
+            GroupBox6.Controls.Add(EmbedPatchCheckBox);
             GroupBox6.Controls.Add(SaveButton);
             GroupBox6.Controls.Add(OpenxexpButton);
             GroupBox6.Controls.Add(Label2);
@@ -818,6 +883,19 @@ namespace XexToolGUI
             Label2.Size = new Size(186, 15);
             Label2.TabIndex = 28;
             Label2.Text = "There must be no spaces available";
+            // 
+            // EmbedPatchCheckBox
+            // 
+            EmbedPatchCheckBox.AutoSize = true;
+            EmbedPatchCheckBox.Checked = true;
+            EmbedPatchCheckBox.CheckState = CheckState.Checked;
+            EmbedPatchCheckBox.Location = new Point(54, 205);
+            EmbedPatchCheckBox.Name = "EmbedPatchCheckBox";
+            EmbedPatchCheckBox.Size = new Size(220, 19);
+            EmbedPatchCheckBox.TabIndex = 32;
+            EmbedPatchCheckBox.Text = "Embed patch in output (-u)";
+            ToolTip1.SetToolTip(EmbedPatchCheckBox, "When checked, patched xex won't need separate xexp file");
+            EmbedPatchCheckBox.UseVisualStyleBackColor = true;
             // 
             // Label8
             // 
@@ -909,6 +987,8 @@ namespace XexToolGUI
         private ToolStripMenuItem IdcFileForIDAToolStripMenuItem;
         private ToolStripMenuItem XMLToolStripMenuItem;
         private ToolStripMenuItem DumbToolStripMenuItem;
+        private ToolStripMenuItem AddBoundingPathToolStripMenuItem;
+        private ToolStripMenuItem SpecialPatchesToolStripMenuItem;
         private ToolStripDropDownButton ToolStripDropDownButton6;
         private ToolStripMenuItem HelpToolStripMenuItem2;
         private ToolStripMenuItem HelpToolStripMenuItem;
@@ -938,6 +1018,11 @@ namespace XexToolGUI
         private ToolStripMenuItem RequiredToolStripMenuItem;
         private ToolStripMenuItem ZeroIDToolStripMenuItem;
         private ToolStripMenuItem AP25ToolStripMenuItem;
+        private ToolStripMenuItem SaveLogToolStripMenuItem;
+        private ToolStripMenuItem DeviceIDToolStripMenuItem;
+        private ToolStripMenuItem ConsoleIDToolStripMenuItem;
+        private ToolStripMenuItem DatesToolStripMenuItem;
+        private ToolStripMenuItem KeyvaultPrivilegesToolStripMenuItem;
         private ToolStripDropDownButton ToolStripDropDownButton8;
         private ToolStripMenuItem RetailToolStripMenuItem;
         private ToolStripMenuItem DevkitToolStripMenuItem;
@@ -962,6 +1047,7 @@ namespace XexToolGUI
         private Label Label7;
         private Button OpenxexButton;
         private Label Label6;
+        private CheckBox EmbedPatchCheckBox;
         private CheckBox CheckBox1;
         private GroupBox GroupBox1;
         private Label Label1;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -59,15 +59,20 @@ namespace XexToolGUI
             }
         }
 
-        private void LogMessage(string message)
+        private void LogMessage(string message, LogLevel level = LogLevel.Info)
         {
+            Logger.Info(message);
             if (InvokeRequired)
             {
-                Invoke(new Action(() => LogMessage(message)));
+                BeginInvoke(new Action(() => AppendToLog($"[{DateTime.Now:HH:mm:ss}] {message}")));
                 return;
             }
+            AppendToLog($"[{DateTime.Now:HH:mm:ss}] {message}");
+        }
 
-            XLogBox.AppendText($"[{DateTime.Now:HH:mm:ss}] {message}{Environment.NewLine}");
+        private void AppendToLog(string text)
+        {
+            XLogBox.AppendText(text + Environment.NewLine);
             XLogBox.SelectionStart = XLogBox.Text.Length;
             XLogBox.ScrollToCaret();
         }
@@ -358,9 +363,10 @@ namespace XexToolGUI
                 LogMessage("Starting patch operation...");
                 UpdateProgressBar(0);
 
-                // Step 1: Execute patching command
+                // Step 1: Execute patching command (-u embeds patch so xexp not needed)
                 UpdateProgressBar(10, "Executing patch command...");
-                await ExecuteCommandAsync(" -u -p " + XeXUpdate + " -o " + PatchedXEX + " " + XeXFile);
+                string embedFlag = EmbedPatchCheckBox?.Checked != false ? " -u" : "";
+                await ExecuteCommandAsync(embedFlag + " -p " + XeXUpdate + " -o " + PatchedXEX + " " + XeXFile);
 
                 // Step 2: Wait for completion
                 UpdateProgressBar(50, "Waiting for patch completion...");
@@ -793,6 +799,94 @@ namespace XexToolGUI
             }
         }
 
+        private async void DeviceIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            LogMessage("Starting device ID removal...");
+            UpdateProgressBar(0);
+            try
+            {
+                await ExecuteCommandAsync(" -r d " + XeXFileTextBox.Text);
+            }
+            finally
+            {
+                SetProgressBarStyle(ProgressBarStyle.Continuous);
+                UpdateProgressBar(0);
+            }
+        }
+
+        private async void ConsoleIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            LogMessage("Starting console ID removal...");
+            UpdateProgressBar(0);
+            try
+            {
+                await ExecuteCommandAsync(" -r i " + XeXFileTextBox.Text);
+            }
+            finally
+            {
+                SetProgressBarStyle(ProgressBarStyle.Continuous);
+                UpdateProgressBar(0);
+            }
+        }
+
+        private async void DatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            LogMessage("Starting dates restriction removal...");
+            UpdateProgressBar(0);
+            try
+            {
+                await ExecuteCommandAsync(" -r y " + XeXFileTextBox.Text);
+            }
+            finally
+            {
+                SetProgressBarStyle(ProgressBarStyle.Continuous);
+                UpdateProgressBar(0);
+            }
+        }
+
+        private async void KeyvaultPrivilegesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XLogBox.Text = string.Empty;
+            LogMessage("Starting keyvault privileges removal...");
+            UpdateProgressBar(0);
+            try
+            {
+                await ExecuteCommandAsync(" -r v " + XeXFileTextBox.Text);
+            }
+            finally
+            {
+                SetProgressBarStyle(ProgressBarStyle.Continuous);
+                UpdateProgressBar(0);
+            }
+        }
+
+        private void SaveLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Log files (*.log)|*.log|Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                sfd.DefaultExt = "log";
+                sfd.FileName = $"xextool_log_{DateTime.Now:yyyyMMdd_HHmmss}.log";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        File.WriteAllText(sfd.FileName, XLogBox.Text, System.Text.Encoding.UTF8);
+                        LogMessage($"Log saved to: {sfd.FileName}");
+                        MessageBox.Show("Log saved successfully.", "Save Log", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error($"Failed to save log: {ex.Message}");
+                        MessageBox.Show($"Failed to save log: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
         private async Task ValidateAndSetFileAsync(object sender, DragEventArgs e, string ValidExtention = ".xex")
         {
             TextBox textBox = (TextBox)sender;
@@ -1064,14 +1158,63 @@ namespace XexToolGUI
             }
         }
 
-        private void SaveAS(object sender, EventArgs e)
+        private async void SaveAS(object sender, EventArgs e)
         {
-            if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (SaveFileDialog1.ShowDialog() != DialogResult.OK)
+                return;
+
+            string outputPath = SaveFileDialog1.FileName;
+            SavePatchTextBox.Text = outputPath;
+            string fileName = Path.GetFileName(outputPath);
+            PatchedXEX = Path.Combine(basePath, fileName);
+            LogMessage($"Save path set: {outputPath}");
+
+            // If both XEX and XEXP are filled, run patch and save
+            string xexPath = XeXFileTextBox.Text?.Trim();
+            string xexpPath = XeXpFileTextBox.Text?.Trim();
+            if (!string.IsNullOrEmpty(xexPath) && !string.IsNullOrEmpty(xexpPath) &&
+                File.Exists(xexPath) && File.Exists(xexpPath))
             {
-                SavePatchTextBox.Text = SaveFileDialog1.FileName;
-                string fileName = Path.GetFileName(SaveFileDialog1.FileName);
-                PatchedXEX = Path.Combine(basePath, fileName);
-                LogMessage($"Save path set: {SaveFileDialog1.FileName}");
+                var button = sender as Button;
+                if (button != null) button.Enabled = false;
+
+                try
+                {
+                    XLogBox.Text = string.Empty;
+                    LogMessage("Save with patch: patching XEX with XEXP...");
+                    UpdateProgressBar(0);
+
+                    string embedFlag = EmbedPatchCheckBox?.Checked != false ? " -u" : "";
+                    string patchOutput = Path.Combine(basePath, "patched_" + fileName);
+
+                    UpdateProgressBar(10, "Executing patch command...");
+                    await ExecuteCommandAsync(embedFlag + " -p \"" + xexpPath + "\" -o \"" + patchOutput + "\" \"" + xexPath + "\"");
+
+                    UpdateProgressBar(50, "Waiting for patch completion...");
+                    if (await WaitForCompleteFileAsync(patchOutput, 60))
+                    {
+                        UpdateProgressBar(80, "Saving to destination...");
+                        await MoveFileAsync(patchOutput, outputPath);
+                        UpdateProgressBar(100, "Patch and save completed successfully!");
+                        MessageBox.Show("XEX patched and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        LogMessage("Patch operation timed out");
+                        MessageBox.Show("Timeout waiting for patched file.", "Timeout", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogMessage($"Patch/save failed: {ex.Message}");
+                    MessageBox.Show($"Patch/save failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    SetProgressBarStyle(ProgressBarStyle.Continuous);
+                    UpdateProgressBar(0);
+                    if (button != null) button.Enabled = true;
+                }
             }
         }
 
@@ -1201,6 +1344,45 @@ namespace XexToolGUI
                 Hide();
                 Program.xml.ShowDialog();
             }
+        }
+
+        private async void AddBoundingPathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(XeXFileTextBox.Text) || !File.Exists(XeXFileTextBox.Text))
+            {
+                MessageBox.Show("Please select a valid XEX file first.", "No XEX File", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string path = Microsoft.VisualBasic.Interaction.InputBox("Enter bounding path to add:", "Add Bounding Path", "");
+            if (string.IsNullOrEmpty(path))
+                return;
+
+            XLogBox.Text = string.Empty;
+            LogMessage($"Adding bounding path: {path}");
+            UpdateProgressBar(0);
+            try
+            {
+                string outputArg = !string.IsNullOrEmpty(SavePatchTextBox.Text)
+                    ? $" -o \"{SavePatchTextBox.Text}\""
+                    : "";
+                await ExecuteCommandAsync($" -a \"{path}\"{outputArg} \"{XeXFileTextBox.Text}\"");
+            }
+            finally
+            {
+                SetProgressBarStyle(ProgressBarStyle.Continuous);
+                UpdateProgressBar(0);
+            }
+        }
+
+        private void SpecialPatchesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.SpecialPatches == null)
+            {
+                Program.SpecialPatches = new SpecialPatches();
+            }
+            Hide();
+            Program.SpecialPatches.ShowDialog();
         }
 
         // Add a method to add a Cancel button (you would need to add this to your form design)

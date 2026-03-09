@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -16,6 +16,7 @@ namespace XexToolGUI
         public static xml xml { get; set; }
         public static xexgui xexgui { get; set; }
         public static HelpReverse HelpReverse { get; set; }
+        public static SpecialPatches SpecialPatches { get; set; }
         public static Process process { get; set; }
         public static void ExecuteProcess(string Args)
         {
