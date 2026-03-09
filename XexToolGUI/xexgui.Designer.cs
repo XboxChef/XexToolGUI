@@ -268,7 +268,7 @@ namespace XexToolGUI
             ToolStripDropDownButton2.Name = "ToolStripDropDownButton2";
             ToolStripDropDownButton2.Size = new Size(38, 22);
             ToolStripDropDownButton2.Text = "File";
-            ToolStripDropDownButton2.ToolTipText = "Option";
+            ToolStripDropDownButton2.ToolTipText = "";
             // 
             // SelectxexToolStripMenuItem1
             // 
@@ -276,7 +276,7 @@ namespace XexToolGUI
             SelectxexToolStripMenuItem1.Name = "SelectxexToolStripMenuItem1";
             SelectxexToolStripMenuItem1.Size = new Size(133, 22);
             SelectxexToolStripMenuItem1.Text = "Select xex";
-            SelectxexToolStripMenuItem1.ToolTipText = "Open xex file";
+            SelectxexToolStripMenuItem1.ToolTipText = "";
             SelectxexToolStripMenuItem1.Click += SelectxexToolStripMenuItem1_Click;
             // 
             // SelectToolStripMenuItem
@@ -285,7 +285,7 @@ namespace XexToolGUI
             SelectToolStripMenuItem.Name = "SelectToolStripMenuItem";
             SelectToolStripMenuItem.Size = new Size(133, 22);
             SelectToolStripMenuItem.Text = "Select xexp";
-            SelectToolStripMenuItem.ToolTipText = "Open xexp file";
+            SelectToolStripMenuItem.ToolTipText = "";
             SelectToolStripMenuItem.Click += SelectToolStripMenuItem_Click;
             // 
             // SavexexToolStripMenuItem
@@ -294,7 +294,7 @@ namespace XexToolGUI
             SavexexToolStripMenuItem.Name = "SavexexToolStripMenuItem";
             SavexexToolStripMenuItem.Size = new Size(133, 22);
             SavexexToolStripMenuItem.Text = "Save As";
-            SavexexToolStripMenuItem.ToolTipText = "Save file";
+            SavexexToolStripMenuItem.ToolTipText = "";
             SavexexToolStripMenuItem.Click += SavexexToolStripMenuItem_Click;
             // 
             // SaveLogToolStripMenuItem
@@ -303,7 +303,7 @@ namespace XexToolGUI
             SaveLogToolStripMenuItem.Name = "SaveLogToolStripMenuItem";
             SaveLogToolStripMenuItem.Size = new Size(180, 22);
             SaveLogToolStripMenuItem.Text = "Save Log...";
-            SaveLogToolStripMenuItem.ToolTipText = "Save log output to file";
+            SaveLogToolStripMenuItem.ToolTipText = "";
             SaveLogToolStripMenuItem.Click += SaveLogToolStripMenuItem_Click;
             // 
             // ClearToolStripMenuItem1
@@ -312,7 +312,7 @@ namespace XexToolGUI
             ClearToolStripMenuItem1.Name = "ClearToolStripMenuItem1";
             ClearToolStripMenuItem1.Size = new Size(133, 22);
             ClearToolStripMenuItem1.Text = "Clear";
-            ClearToolStripMenuItem1.ToolTipText = "Clear all Box";
+            ClearToolStripMenuItem1.ToolTipText = "";
             ClearToolStripMenuItem1.Click += ClearTool;
             // 
             // ExitToolStripMenuItem2
@@ -321,7 +321,7 @@ namespace XexToolGUI
             ExitToolStripMenuItem2.Name = "ExitToolStripMenuItem2";
             ExitToolStripMenuItem2.Size = new Size(133, 22);
             ExitToolStripMenuItem2.Text = "Exit";
-            ExitToolStripMenuItem2.ToolTipText = "Close App";
+            ExitToolStripMenuItem2.ToolTipText = "";
             ExitToolStripMenuItem2.Click += ExitToolStripMenuItem2_Click;
             // 
             // ToolStripDropDownButton4
@@ -339,7 +339,7 @@ namespace XexToolGUI
             CMDToolStripMenuItem.Name = "CMDToolStripMenuItem";
             CMDToolStripMenuItem.Size = new Size(108, 22);
             CMDToolStripMenuItem.Text = "CMD";
-            CMDToolStripMenuItem.ToolTipText = "xextool.exe run from the command line";
+            CMDToolStripMenuItem.ToolTipText = "";
             CMDToolStripMenuItem.Click += CMDToolStripMenuItem_Click;
             // 
             // HxDToolStripMenuItem1
@@ -348,7 +348,7 @@ namespace XexToolGUI
             HxDToolStripMenuItem1.Name = "HxDToolStripMenuItem1";
             HxDToolStripMenuItem1.Size = new Size(108, 22);
             HxDToolStripMenuItem1.Text = "HxD";
-            HxDToolStripMenuItem1.ToolTipText = "Hex Editor";
+            HxDToolStripMenuItem1.ToolTipText = "";
             HxDToolStripMenuItem1.Visible = false;
             HxDToolStripMenuItem1.Click += HxDToolStripMenuItem1_Click;
             // 
@@ -358,7 +358,7 @@ namespace XexToolGUI
             WxPirsToolStripMenuItem.Name = "WxPirsToolStripMenuItem";
             WxPirsToolStripMenuItem.Size = new Size(108, 22);
             WxPirsToolStripMenuItem.Text = "wxPirs";
-            WxPirsToolStripMenuItem.ToolTipText = "Extract Live, Pirs files";
+            WxPirsToolStripMenuItem.ToolTipText = "";
             WxPirsToolStripMenuItem.Visible = false;
             WxPirsToolStripMenuItem.Click += WxPirsToolStripMenuItem_Click;
             // 
@@ -377,7 +377,7 @@ namespace XexToolGUI
             TitleUpdatesToolStripMenuItem1.Name = "TitleUpdatesToolStripMenuItem1";
             TitleUpdatesToolStripMenuItem1.Size = new Size(142, 22);
             TitleUpdatesToolStripMenuItem1.Text = "Title Updates";
-            TitleUpdatesToolStripMenuItem1.ToolTipText = "Search Game Updates ";
+            TitleUpdatesToolStripMenuItem1.ToolTipText = "";
             TitleUpdatesToolStripMenuItem1.Click += TitleUpdatesToolStripMenuItem1_Click;
             // 
             // IdcFileForIDAToolStripMenuItem
@@ -386,7 +386,7 @@ namespace XexToolGUI
             IdcFileForIDAToolStripMenuItem.Name = "IdcFileForIDAToolStripMenuItem";
             IdcFileForIDAToolStripMenuItem.Size = new Size(142, 22);
             IdcFileForIDAToolStripMenuItem.Text = "IDC";
-            IdcFileForIDAToolStripMenuItem.ToolTipText = "Create idc file for IDA";
+            IdcFileForIDAToolStripMenuItem.ToolTipText = "";
             IdcFileForIDAToolStripMenuItem.Click += IdcFileForIDAToolStripMenuItem_Click;
             // 
             // XMLToolStripMenuItem
@@ -403,7 +403,7 @@ namespace XexToolGUI
             DumbToolStripMenuItem.Name = "DumbToolStripMenuItem";
             DumbToolStripMenuItem.Size = new Size(142, 22);
             DumbToolStripMenuItem.Text = "Dump";
-            DumbToolStripMenuItem.ToolTipText = "Dump an xex file";
+            DumbToolStripMenuItem.ToolTipText = "";
             DumbToolStripMenuItem.Click += DumbToolStripMenuItem_Click;
             // 
             // AddBoundingPathToolStripMenuItem
@@ -411,7 +411,7 @@ namespace XexToolGUI
             AddBoundingPathToolStripMenuItem.Name = "AddBoundingPathToolStripMenuItem";
             AddBoundingPathToolStripMenuItem.Size = new Size(180, 22);
             AddBoundingPathToolStripMenuItem.Text = "Add Bounding Path";
-            AddBoundingPathToolStripMenuItem.ToolTipText = "Add bounding path to xex location";
+            AddBoundingPathToolStripMenuItem.ToolTipText = "";
             AddBoundingPathToolStripMenuItem.Click += AddBoundingPathToolStripMenuItem_Click;
             // 
             // SpecialPatchesToolStripMenuItem
@@ -419,7 +419,7 @@ namespace XexToolGUI
             SpecialPatchesToolStripMenuItem.Name = "SpecialPatchesToolStripMenuItem";
             SpecialPatchesToolStripMenuItem.Size = new Size(180, 22);
             SpecialPatchesToolStripMenuItem.Text = "Special Patches";
-            SpecialPatchesToolStripMenuItem.ToolTipText = "Apply special xex patches (bitflags 0/1/2/4/8/.../-1)";
+            SpecialPatchesToolStripMenuItem.ToolTipText = "";
             SpecialPatchesToolStripMenuItem.Click += SpecialPatchesToolStripMenuItem_Click;
             // 
             // ToolStripDropDownButton6
@@ -531,7 +531,7 @@ namespace XexToolGUI
             BackupxexToolStripButton.Name = "BackupxexToolStripButton";
             BackupxexToolStripButton.Size = new Size(23, 22);
             BackupxexToolStripButton.Text = "Backup from a xex file";
-            BackupxexToolStripButton.ToolTipText = "Backup a xex file";
+            BackupxexToolStripButton.ToolTipText = "";
             BackupxexToolStripButton.Click += BackupxexToolStripButton_Click;
             // 
             // ToolStripSeparator2
@@ -547,7 +547,7 @@ namespace XexToolGUI
             PatchxexToolStripButton.Name = "PatchxexToolStripButton";
             PatchxexToolStripButton.Size = new Size(23, 22);
             PatchxexToolStripButton.Text = "Patch a xex file with xexp file";
-            PatchxexToolStripButton.ToolTipText = "Patch xex file with xexp file";
+            PatchxexToolStripButton.ToolTipText = "";
             PatchxexToolStripButton.Click += PatchxexToolStripButton_Click;
             // 
             // ToolStripSeparator3
@@ -586,7 +586,7 @@ namespace XexToolGUI
             RegionToolStripMenuItem.Name = "RegionToolStripMenuItem";
             RegionToolStripMenuItem.Size = new Size(128, 22);
             RegionToolStripMenuItem.Text = "Region";
-            RegionToolStripMenuItem.ToolTipText = "Makes a Region Free file\r\n* Region limits limit what console regions an xex can be booted on.";
+            RegionToolStripMenuItem.ToolTipText = "";
             RegionToolStripMenuItem.Click += RegionToolStripMenuItem_Click;
             // 
             // MediaToolStripMenuItem
@@ -595,7 +595,7 @@ namespace XexToolGUI
             MediaToolStripMenuItem.Name = "MediaToolStripMenuItem";
             MediaToolStripMenuItem.Size = new Size(128, 22);
             MediaToolStripMenuItem.Text = "Media";
-            MediaToolStripMenuItem.ToolTipText = "Remove the media limits\r\n* Media limits limit what media the xex can be booted from.";
+            MediaToolStripMenuItem.ToolTipText = "";
             MediaToolStripMenuItem.Click += MediaToolStripMenuItem_Click;
             // 
             // DashToolStripMenuItem
@@ -604,7 +604,7 @@ namespace XexToolGUI
             DashToolStripMenuItem.Name = "DashToolStripMenuItem";
             DashToolStripMenuItem.Size = new Size(128, 22);
             DashToolStripMenuItem.Text = "Dash";
-            DashToolStripMenuItem.ToolTipText = "Remove Dashboard version\r\n* Minimum library versions require system dlls to be of a specified\r\n  version of higher. The usual imports are from xboxkrnl.exe and xam.exe.";
+            DashToolStripMenuItem.ToolTipText = "";
             DashToolStripMenuItem.Click += DashToolStripMenuItem_Click;
             // 
             // PathnameToolStripMenuItem
@@ -613,7 +613,7 @@ namespace XexToolGUI
             PathnameToolStripMenuItem.Name = "PathnameToolStripMenuItem";
             PathnameToolStripMenuItem.Size = new Size(128, 22);
             PathnameToolStripMenuItem.Text = "Pathname";
-            PathnameToolStripMenuItem.ToolTipText = "Remove Bounding pathname limits\r\n* Bounding pathname limits a xex to being executed from a specified \r\n   path only.";
+            PathnameToolStripMenuItem.ToolTipText = "";
             PathnameToolStripMenuItem.Click += PathnameToolStripMenuItem_Click;
             // 
             // KeyvaultToolStripMenuItem
@@ -622,7 +622,7 @@ namespace XexToolGUI
             KeyvaultToolStripMenuItem.Name = "KeyvaultToolStripMenuItem";
             KeyvaultToolStripMenuItem.Size = new Size(128, 22);
             KeyvaultToolStripMenuItem.Text = "Keyvault";
-            KeyvaultToolStripMenuItem.ToolTipText = "Remove Signed keyvault limits\r\n* Signed keyvault limits an xex to running from an xbox360 which has a \r\n   signed keyvault.";
+            KeyvaultToolStripMenuItem.ToolTipText = "";
             KeyvaultToolStripMenuItem.Click += KeyvaultToolStripMenuItem_Click;
             // 
             // RequiredToolStripMenuItem
@@ -631,7 +631,7 @@ namespace XexToolGUI
             RequiredToolStripMenuItem.Name = "RequiredToolStripMenuItem";
             RequiredToolStripMenuItem.Size = new Size(128, 22);
             RequiredToolStripMenuItem.Text = "Required";
-            RequiredToolStripMenuItem.ToolTipText = "Remove Required revocation check\r\n* Required revocation check requires the xex to be checked against\r\n   a list of revocated xexs before allowing it to boot.";
+            RequiredToolStripMenuItem.ToolTipText = "";
             RequiredToolStripMenuItem.Click += RequiredToolStripMenuItem_Click;
             // 
             // ZeroIDToolStripMenuItem
@@ -640,7 +640,7 @@ namespace XexToolGUI
             ZeroIDToolStripMenuItem.Name = "ZeroIDToolStripMenuItem";
             ZeroIDToolStripMenuItem.Size = new Size(128, 22);
             ZeroIDToolStripMenuItem.Text = "Zero ID";
-            ZeroIDToolStripMenuItem.ToolTipText = "Zero the media id\r\n* A media id can be used to block an xex from running if it matches known\r\n  \"banned\" media ids. This is the case for xexs from the famous \"kiosk disc\".";
+            ZeroIDToolStripMenuItem.ToolTipText = "";
             ZeroIDToolStripMenuItem.Click += ZeroIDToolStripMenuItem_Click;
             // 
             // AP25ToolStripMenuItem
@@ -649,7 +649,7 @@ namespace XexToolGUI
             AP25ToolStripMenuItem.Name = "AP25ToolStripMenuItem";
             AP25ToolStripMenuItem.Size = new Size(128, 22);
             AP25ToolStripMenuItem.Text = "AP2.5";
-            AP25ToolStripMenuItem.ToolTipText = "Remove Ap2.5 Checks Beta";
+            AP25ToolStripMenuItem.ToolTipText = "";
             AP25ToolStripMenuItem.Click += AP25ToolStripMenuItem_Click;
             // 
             // DeviceIDToolStripMenuItem
@@ -657,7 +657,7 @@ namespace XexToolGUI
             DeviceIDToolStripMenuItem.Name = "DeviceIDToolStripMenuItem";
             DeviceIDToolStripMenuItem.Size = new Size(180, 22);
             DeviceIDToolStripMenuItem.Text = "Device ID";
-            DeviceIDToolStripMenuItem.ToolTipText = "Remove bounding device id";
+            DeviceIDToolStripMenuItem.ToolTipText = "";
             DeviceIDToolStripMenuItem.Click += DeviceIDToolStripMenuItem_Click;
             // 
             // ConsoleIDToolStripMenuItem
@@ -665,7 +665,7 @@ namespace XexToolGUI
             ConsoleIDToolStripMenuItem.Name = "ConsoleIDToolStripMenuItem";
             ConsoleIDToolStripMenuItem.Size = new Size(180, 22);
             ConsoleIDToolStripMenuItem.Text = "Console ID";
-            ConsoleIDToolStripMenuItem.ToolTipText = "Remove console id restriction";
+            ConsoleIDToolStripMenuItem.ToolTipText = "";
             ConsoleIDToolStripMenuItem.Click += ConsoleIDToolStripMenuItem_Click;
             // 
             // DatesToolStripMenuItem
@@ -673,7 +673,7 @@ namespace XexToolGUI
             DatesToolStripMenuItem.Name = "DatesToolStripMenuItem";
             DatesToolStripMenuItem.Size = new Size(180, 22);
             DatesToolStripMenuItem.Text = "Dates";
-            DatesToolStripMenuItem.ToolTipText = "Remove dates restriction";
+            DatesToolStripMenuItem.ToolTipText = "";
             DatesToolStripMenuItem.Click += DatesToolStripMenuItem_Click;
             // 
             // KeyvaultPrivilegesToolStripMenuItem
@@ -681,7 +681,7 @@ namespace XexToolGUI
             KeyvaultPrivilegesToolStripMenuItem.Name = "KeyvaultPrivilegesToolStripMenuItem";
             KeyvaultPrivilegesToolStripMenuItem.Size = new Size(180, 22);
             KeyvaultPrivilegesToolStripMenuItem.Text = "Keyvault Privileges";
-            KeyvaultPrivilegesToolStripMenuItem.ToolTipText = "Remove keyvault privileges restriction";
+            KeyvaultPrivilegesToolStripMenuItem.ToolTipText = "";
             KeyvaultPrivilegesToolStripMenuItem.Click += KeyvaultPrivilegesToolStripMenuItem_Click;
             // 
             // ToolStripDropDownButton8
@@ -700,7 +700,7 @@ namespace XexToolGUI
             RetailToolStripMenuItem.Name = "RetailToolStripMenuItem";
             RetailToolStripMenuItem.Size = new Size(107, 22);
             RetailToolStripMenuItem.Text = "Retail";
-            RetailToolStripMenuItem.ToolTipText = "Created from a development xex file a xex file \r\nfor the retail xbox360";
+            RetailToolStripMenuItem.ToolTipText = "";
             RetailToolStripMenuItem.Click += RetailToolStripMenuItem_Click;
             // 
             // DevkitToolStripMenuItem
@@ -709,7 +709,7 @@ namespace XexToolGUI
             DevkitToolStripMenuItem.Name = "DevkitToolStripMenuItem";
             DevkitToolStripMenuItem.Size = new Size(107, 22);
             DevkitToolStripMenuItem.Text = "Devkit";
-            DevkitToolStripMenuItem.ToolTipText = "Created from a retail xex file a xex file for the \r\nprocessing of a development xbox360";
+            DevkitToolStripMenuItem.ToolTipText = "";
             DevkitToolStripMenuItem.Click += DevkitToolStripMenuItem_Click;
             // 
             // InfoToolStripMenuItem1
@@ -718,7 +718,7 @@ namespace XexToolGUI
             InfoToolStripMenuItem1.Name = "InfoToolStripMenuItem1";
             InfoToolStripMenuItem1.Size = new Size(107, 22);
             InfoToolStripMenuItem1.Text = "Info";
-            InfoToolStripMenuItem1.ToolTipText = "Not only will the xex work on a devkit, it will also now work from any media\r\nand run region independently";
+            InfoToolStripMenuItem1.ToolTipText = "";
             InfoToolStripMenuItem1.Click += InfoToolStripMenuItem1_Click;
             // 
             // ToolStripDropDownButton3
@@ -737,7 +737,7 @@ namespace XexToolGUI
             UncryptedToolStripMenuItem.Name = "UncryptedToolStripMenuItem";
             UncryptedToolStripMenuItem.Size = new Size(129, 22);
             UncryptedToolStripMenuItem.Text = "Uncrypted";
-            UncryptedToolStripMenuItem.ToolTipText = "xex to be uncrypted";
+            UncryptedToolStripMenuItem.ToolTipText = "";
             UncryptedToolStripMenuItem.Click += UncryptedToolStripMenuItem_Click;
             // 
             // EncryptedToolStripMenuItem
@@ -746,7 +746,7 @@ namespace XexToolGUI
             EncryptedToolStripMenuItem.Name = "EncryptedToolStripMenuItem";
             EncryptedToolStripMenuItem.Size = new Size(129, 22);
             EncryptedToolStripMenuItem.Text = "Encrypted";
-            EncryptedToolStripMenuItem.ToolTipText = "xex to be encrypted";
+            EncryptedToolStripMenuItem.ToolTipText = "";
             EncryptedToolStripMenuItem.Click += EncryptedToolStripMenuItem_Click;
             // 
             // ToolStripDropDownButton9
@@ -765,7 +765,7 @@ namespace XexToolGUI
             XexBasicToolStripMenuItem.Name = "XexBasicToolStripMenuItem";
             XexBasicToolStripMenuItem.Size = new Size(144, 22);
             XexBasicToolStripMenuItem.Text = "xex Basic";
-            XexBasicToolStripMenuItem.ToolTipText = "Print basic info about an xex file";
+            XexBasicToolStripMenuItem.ToolTipText = "";
             XexBasicToolStripMenuItem.Click += XexBasicToolStripMenuItem_Click;
             // 
             // XexExtendedToolStripMenuItem
@@ -774,7 +774,7 @@ namespace XexToolGUI
             XexExtendedToolStripMenuItem.Name = "XexExtendedToolStripMenuItem";
             XexExtendedToolStripMenuItem.Size = new Size(144, 22);
             XexExtendedToolStripMenuItem.Text = "xex Extended";
-            XexExtendedToolStripMenuItem.ToolTipText = "Print extended info list about xex file\r\nTitle ID, Media ID, Dashversion and\r\nmany more";
+            XexExtendedToolStripMenuItem.ToolTipText = "";
             XexExtendedToolStripMenuItem.Click += XexExtendedToolStripMenuItem_Click;
             // 
             // ToolStripSeparator1
@@ -790,7 +790,7 @@ namespace XexToolGUI
             ReadInfoToolStripButton.Name = "ReadInfoToolStripButton";
             ReadInfoToolStripButton.Size = new Size(23, 22);
             ReadInfoToolStripButton.Text = "Read Log";
-            ReadInfoToolStripButton.ToolTipText = "Read the xex info log";
+            ReadInfoToolStripButton.ToolTipText = "";
             ReadInfoToolStripButton.Click += ReadInfoToolStripButton_Click;
             // 
             // ToolStripDropDownButton10
@@ -809,7 +809,7 @@ namespace XexToolGUI
             UncompressedToolStripMenuItem.Name = "UncompressedToolStripMenuItem";
             UncompressedToolStripMenuItem.Size = new Size(153, 22);
             UncompressedToolStripMenuItem.Text = "Uncompressed";
-            UncompressedToolStripMenuItem.ToolTipText = "xex to be uncompressed (no zeroed data)";
+            UncompressedToolStripMenuItem.ToolTipText = "";
             UncompressedToolStripMenuItem.Click += UncompressedToolStripMenuItem_Click;
             // 
             // CompressedToolStripMenuItem
@@ -818,7 +818,7 @@ namespace XexToolGUI
             CompressedToolStripMenuItem.Name = "CompressedToolStripMenuItem";
             CompressedToolStripMenuItem.Size = new Size(153, 22);
             CompressedToolStripMenuItem.Text = "Compressed";
-            CompressedToolStripMenuItem.ToolTipText = "xex to be compressed";
+            CompressedToolStripMenuItem.ToolTipText = "";
             CompressedToolStripMenuItem.Click += CompressedToolStripMenuItem_Click;
             // 
             // BinaryToolStripMenuItem
@@ -827,7 +827,7 @@ namespace XexToolGUI
             BinaryToolStripMenuItem.Name = "BinaryToolStripMenuItem";
             BinaryToolStripMenuItem.Size = new Size(153, 22);
             BinaryToolStripMenuItem.Text = "Binary";
-            BinaryToolStripMenuItem.ToolTipText = "xex to be binary (has zeroed data)";
+            BinaryToolStripMenuItem.ToolTipText = "";
             BinaryToolStripMenuItem.Click += BinaryToolStripMenuItem_Click;
             // 
             // GroupBox6
